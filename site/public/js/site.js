@@ -103,6 +103,14 @@ async function showEntity(id) {
     ${powerProfile}
     ${accountability}
     ${sources ? `<div class="detail-section"><h4>Sources</h4>${sources}</div>` : ''}
+    <div class="detail-section"><h4>Share This Card</h4>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(e.name + ' — ERD: Legends of Humanity')}&url=${encodeURIComponent('https://legends-of-humanity.onrender.com/entity/' + e.id)}" target="_blank" style="padding:6px 14px;background:#1da1f2;color:white;border-radius:6px;font-size:12px;text-decoration:none">𝕏 Share</a>
+        <a href="https://wa.me/?text=${encodeURIComponent(e.name + ' — Check this out: https://legends-of-humanity.onrender.com/entity/' + e.id)}" target="_blank" style="padding:6px 14px;background:#25d366;color:white;border-radius:6px;font-size:12px;text-decoration:none">WhatsApp</a>
+        <a href="https://t.me/share/url?url=${encodeURIComponent('https://legends-of-humanity.onrender.com/entity/' + e.id)}&text=${encodeURIComponent(e.name + ' — ERD: Legends of Humanity')}" target="_blank" style="padding:6px 14px;background:#0088cc;color:white;border-radius:6px;font-size:12px;text-decoration:none">Telegram</a>
+        <button onclick="navigator.clipboard.writeText('https://legends-of-humanity.onrender.com/entity/${e.id}').then(()=>alert('Link copied!'))" style="padding:6px 14px;background:#333;color:white;border-radius:6px;font-size:12px;border:none;cursor:pointer">📋 Copy Link</button>
+      </div>
+    </div>
     <div class="detail-section"><h4>Help Improve</h4><p>See an error? Have a better source? <a href="https://github.com/legends-of-humanity/legends-of-humanity" target="_blank">Contribute on GitHub</a>.</p></div>
   `;
   document.getElementById('entity-modal').style.display = 'flex';
@@ -182,6 +190,11 @@ function launchGameAI(difficulty) {
   const frame = document.getElementById('game-frame');
   frame.style.display = 'block';
   frame.src = '/game/?ai=' + difficulty;
+}
+
+// --- PWA ---
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch(() => {});
 }
 
 // --- INIT ---

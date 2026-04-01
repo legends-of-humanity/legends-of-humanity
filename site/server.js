@@ -78,6 +78,40 @@ app.get('/api/entities', (req, res) => {
   } catch(e) { res.status(500).json({ error: e.message }); }
 });
 
+// Share page for entity (generates OG meta tags for social preview)
+app.get('/entity/:id', (req, res) => {
+  const entities = getAllEntities();
+  const entity = entities.find(e => e.id === req.params.id);
+  if (!entity) return res.redirect('/');
+  const name = entity.name || 'Unknown';
+  const desc = entity.oneLine || entity.summary || 'An entity in the ERD atlas.';
+  const type = entity.entityType || 'Entity';
+  const rarity = entity.rarity || '';
+  const artUrl = `/game/art/${entity.id}.png`;
+  res.send(`<!DOCTYPE html><html><head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>${name} — ERD: Legends of Humanity</title>
+    <meta property="og:title" content="${name} · ${rarity} ${type}">
+    <meta property="og:description" content="${desc}">
+    <meta property="og:image" content="https://legends-of-humanity.onrender.com${artUrl}">
+    <meta property="og:url" content="https://legends-of-humanity.onrender.com/entity/${entity.id}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${name} — ERD">
+    <meta name="twitter:description" content="${desc}">
+    <meta name="twitter:image" content="https://legends-of-humanity.onrender.com${artUrl}">
+    <style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui;background:#08080d;color:#d4d0c8;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:24px;text-align:center}
+    .card{max-width:400px}.card img{width:100%;border-radius:12px;margin-bottom:16px}h1{color:#c9a84c;font-size:24px}p{color:#888;margin:8px 0}
+    a{color:#c9a84c;display:inline-block;margin-top:16px;padding:12px 24px;border:1px solid #c9a84c;border-radius:8px;text-decoration:none}a:hover{background:#c9a84c;color:#08080d}</style>
+  </head><body><div class="card">
+    <img src="${artUrl}" alt="${name}" onerror="this.style.display='none'">
+    <h1>${name}</h1>
+    <p>${rarity} · ${type}</p>
+    <p>${desc}</p>
+    <a href="/">Explore the Atlas →</a>
+    <a href="/game/?ai=balanced">Play Now →</a>
+  </div></body></html>`);
+});
+
 // Get single entity
 app.get('/api/entities/:id', (req, res) => {
   const entities = getAllEntities();
