@@ -1,0 +1,13 @@
+{
+  "name": "erd-legends-of-humanity",
+  "version": "0.7.0",
+  "description": "Collect humanity. Play history. Fund peace.",
+  "scripts": {
+    "start": "cd site && node server.js",
+    "install": "cd site && npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}

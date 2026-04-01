@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: erd-legends
+    runtime: node
+    buildCommand: cd site && npm install
+    startCommand: cd site && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000

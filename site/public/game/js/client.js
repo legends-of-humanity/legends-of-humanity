@@ -734,7 +734,13 @@ function createCardElement(card, context) {
   const selected = context.location === 'hand' && selectedCards.has(card.id);
   const unaffordable = context.location === 'hand' && !canAfford(localResources, getDeployCost(card));
   const pending = pendingDeployIds.includes(card.id);
+  // Cultural mapping
+  const culture = typeof getCulture === 'function' ? getCulture(card) : 'global';
+  const emoji = typeof getEmoji === 'function' ? getEmoji(card) : (ENTITY_ICONS[card.entityType] || '◆');
+  const accent = typeof getAccent === 'function' ? getAccent(card) : '';
+
   el.className = `game-card rarity-${card.rarity}${selected ? ' selected' : ''}${unaffordable ? ' unaffordable' : ''}${pending ? ' pending' : ''}`;
+  el.setAttribute('data-culture', culture);
 
   const selectButton = context.location === 'hand'
     ? `<button class="card-select${selected ? ' active' : ''}" data-select-card="${card.id}" type="button">${selected ? 'Selected' : 'Select'}</button>`
@@ -743,17 +749,21 @@ function createCardElement(card, context) {
   const costText = formatResourceList(getDeployCost(card));
   const generationText = formatResourceList(getGeneration(card));
   el.innerHTML = `
+    <div class="card-synergy"></div>
     <div class="card-head">
       <div class="card-rarity">${card.rarity}</div>
       ${selectButton}
     </div>
     <div>
-      <div class="card-portrait">${ENTITY_ICONS[card.entityType] || '◆'}</div>
+      <div class="card-portrait">${emoji}</div>
       <div class="card-title">${card.name}</div>
       <div class="card-subtitle">${card.entityType} · ${card.cluster}</div>
+      ${accent ? `<div class="card-accent">${accent}</div>` : ''}
       <div class="card-divider"></div>
-      <div class="info-row"><strong>Deploy</strong><span>${costText}</span></div>
-      <div class="info-row"><strong>Gives</strong><span>${generationText}</span></div>
+      <div class="card-resources">
+        <span class="card-cost">⬇ ${costText}</span>
+        <span class="card-gen">⬆ ${generationText}</span>
+      </div>
       <p class="card-summary">${getOneLine(card)}</p>
     </div>
     <div class="card-footer">
@@ -1191,8 +1201,21 @@ socket.on('phase_change', (data) => {
 });
 
 socket.on('turn_result', (data) => {
-  syncLocalStateFromGame(data.gameState);
-  renderAll();
+  gameState = data.gameState;
+  // Play battle effects for actions in the log
+  if (data.log) {
+    const actionNames = data.log
+      .filter(l => l.includes('resolved'))
+      .map(l => {
+        const m = l.match(/resolved (\w+) with/);
+        return m ? m[1] : null;
+      })
+      .filter(Boolean);
+    if (typeof playActionEffects === 'function') {
+      playActionEffects(actionNames.map(a => ({ action: a })));
+    }
+  }
+  updateUI();
 });
 
 socket.on('game_over', (data) => {
@@ -1201,6 +1224,7 @@ socket.on('game_over', (data) => {
   elements['game-over-title'].textContent = data.winner === myId ? 'Victory' : 'Defeat';
   elements['game-over-reason'].textContent = REASON_MAP[data.reason] || data.reason || 'Match ended.';
   elements['game-over'].hidden = false;
+  if (typeof playVictoryEffect === 'function') playVictoryEffect(data.winner === myId);
 });
 
 socket.on('error', (data) => {
