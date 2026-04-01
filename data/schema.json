@@ -1,0 +1,67 @@
+{
+  "$schema": "ERD Entity Schema v2 — Power & Transparency Edition",
+  "version": "2.0",
+  "description": "Extended schema for tracking power, money, influence, and accountability of global entities.",
+  "entityTypes": ["Person", "Organization", "Country", "Corporation", "Institution", "Movement", "Idea", "Technology", "Resource", "Event"],
+  "fields": {
+    "id": "Unique slug identifier",
+    "name": "Display name",
+    "aliases": "Alternative names",
+    "entityType": "One of entityTypes",
+    "category": "Sub-category: billionaire, politician, tech_ceo, hedge_fund, lobbying_group, think_tank, ngo, media, military, energy, pharma, etc.",
+    "rarity": "Signal | Archive | Relic | Legend | Mythic",
+    "themes": "Array: Power, Money, Truth, Peace, Dignity, Knowledge, Renewal, Coordination",
+    "tags": "Freeform tags for search",
+    "oneLine": "One-sentence summary",
+    "whyItMatters": "Why this entity matters for understanding power",
+    "context": "Historical/structural context",
+    "contradictions": "Known controversies, criticisms, disputed claims",
+
+    "power_profile": {
+      "net_worth_usd": "Estimated net worth or annual budget (number or null)",
+      "net_worth_source": "Source for net worth claim",
+      "revenue_usd": "Annual revenue for orgs/corps (number or null)",
+      "power_type": "Array: financial, political, military, cultural, technological, informational",
+      "influence_regions": "Array of regions/countries where entity has significant influence",
+      "key_positions": "Array of positions held: {title, org, from, to}",
+      "political_donations": "Array: {recipient, amount_usd, year, source_url}",
+      "lobbying_spend_usd": "Annual lobbying expenditure",
+      "media_ownership": "Array of media outlets owned or controlled",
+      "board_seats": "Array: {org, role}"
+    },
+
+    "network": {
+      "allies": "Array of entity IDs with relationship type",
+      "adversaries": "Array of entity IDs",
+      "funded_by": "Array: {entity_id, amount, context}",
+      "funds": "Array: {entity_id, amount, context}",
+      "member_of": "Array of org/institution IDs",
+      "controls": "Array of entity IDs (subsidiaries, controlled orgs)"
+    },
+
+    "accountability": {
+      "legal_issues": "Array: {description, year, status, source_url}",
+      "sanctions": "Array: {type, imposed_by, year}",
+      "human_rights_record": "Brief assessment with source",
+      "environmental_record": "Brief assessment with source",
+      "transparency_score": "1-10 (how transparent is this entity about its actions)",
+      "source_quality": "high | medium | low (how well-sourced is our data)"
+    },
+
+    "judgment": {
+      "dimensions": "Object with scored dimensions like Peace, Dignity, Freedom, Knowledge, Truth contribution",
+      "long_term_influence": "High | Medium | Low",
+      "moral_complexity": "High | Medium | Low"
+    },
+
+    "related": "Array of related entity names/IDs",
+    "sources": "Array: {title, url, type: primary|reference|archive|data|analysis}",
+    "meta": {
+      "added_date": "ISO date",
+      "last_updated": "ISO date",
+      "confidence": "high | medium | low",
+      "contributors": "Array of contributor handles",
+      "needs_review": "Boolean — flagged for community review"
+    }
+  }
+}

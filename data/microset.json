@@ -1,0 +1,199 @@
+{
+  "name": "ERD First Playable Micro-Set",
+  "version": "0.1",
+  "trackedValues": ["Power", "Legitimacy", "Harmony", "Instability"],
+  "cards": [
+    {
+      "id": "gandhi",
+      "name": "Mahatma Gandhi",
+      "entityType": "Person",
+      "rarity": "Legend",
+      "cluster": "Harmony / Legitimacy",
+      "summary": "Turns nonviolent resistance into durable legitimacy and harmony.",
+      "effects": [
+        "Gain +1 Legitimacy when deployed.",
+        "If paired with Nonviolence, gain +1 Harmony when resisting force without escalating instability."
+      ]
+    },
+    {
+      "id": "nonviolence",
+      "name": "Nonviolence",
+      "entityType": "Idea",
+      "rarity": "Legend",
+      "cluster": "Harmony / Legitimacy",
+      "summary": "Converts resistance into legitimacy and long-term world health.",
+      "effects": [
+        "Paired peace-aligned cards gain improved Harmony conversion.",
+        "Slows brute-force strategies if they generate instability."
+      ]
+    },
+    {
+      "id": "martin-luther-king-jr",
+      "name": "Martin Luther King Jr.",
+      "entityType": "Person",
+      "rarity": "Legend",
+      "cluster": "Harmony / Legitimacy",
+      "summary": "Transforms moral clarity and collective action into legitimacy.",
+      "effects": [
+        "Gain Legitimacy when paired with Civil Rights Movement.",
+        "If Harmony is already positive, gain additional Legitimacy."
+      ]
+    },
+    {
+      "id": "nelson-mandela",
+      "name": "Nelson Mandela",
+      "entityType": "Person",
+      "rarity": "Legend",
+      "cluster": "Harmony / Legitimacy",
+      "summary": "Turns conflict endurance into reconciliation and durable legitimacy.",
+      "effects": [
+        "Can convert high Instability into Harmony if Legitimacy threshold is met.",
+        "Stronger when paired with Anti-Apartheid Movement."
+      ]
+    },
+    {
+      "id": "united-nations",
+      "name": "United Nations",
+      "entityType": "Organization",
+      "rarity": "Archive",
+      "cluster": "Harmony / Legitimacy",
+      "summary": "Supports coordination, peace, and instability reduction under the right conditions.",
+      "effects": [
+        "Reduce Instability when enough Legitimacy is present.",
+        "Peace-aligned entities gain improved Harmony conversion."
+      ]
+    },
+    {
+      "id": "malcolm-x",
+      "name": "Malcolm X",
+      "entityType": "Person",
+      "rarity": "Legend",
+      "cluster": "Dignity / Resistance",
+      "summary": "Applies dignity and truth pressure against brittle power systems.",
+      "effects": [
+        "Pressure opponent Legitimacy if they are high-Power and low-Dignity.",
+        "Reveals hypocrisy when paired with Freedom of Speech."
+      ]
+    },
+    {
+      "id": "rosa-parks",
+      "name": "Rosa Parks",
+      "entityType": "Person",
+      "rarity": "Relic",
+      "cluster": "Dignity / Resistance",
+      "summary": "Turns local resistance into wider legitimacy shock.",
+      "effects": [
+        "Low-cost trigger that boosts Civil Rights Movement momentum.",
+        "Can flip a local action into a broader legitimacy shift."
+      ]
+    },
+    {
+      "id": "civil-rights-movement",
+      "name": "Civil Rights Movement",
+      "entityType": "Movement",
+      "rarity": "Mythic",
+      "cluster": "Dignity / Resistance",
+      "summary": "Creates sustained dignity pressure and structural legitimacy change.",
+      "effects": [
+        "Increases Dignity pressure.",
+        "Pairs strongly with MLK and Rosa Parks."
+      ]
+    },
+    {
+      "id": "anti-apartheid-movement",
+      "name": "Anti-Apartheid Movement",
+      "entityType": "Movement",
+      "rarity": "Legend",
+      "cluster": "Dignity / Resistance",
+      "summary": "Converts struggle against domination into legitimacy and freedom pressure.",
+      "effects": [
+        "Supports Mandela's Harmony conversion when Instability is high.",
+        "Adds Freedom and Dignity pressure to oppressive systems."
+      ]
+    },
+    {
+      "id": "freedom-of-speech",
+      "name": "Freedom of Speech",
+      "entityType": "Idea",
+      "rarity": "Relic",
+      "cluster": "Dignity / Resistance",
+      "summary": "Amplifies truth, dissent, and the exposure of weak legitimacy.",
+      "effects": [
+        "Boosts reveal-style actions.",
+        "Stronger with Malcolm X and The Internet."
+      ]
+    },
+    {
+      "id": "open-source",
+      "name": "Open Source",
+      "entityType": "Idea",
+      "rarity": "Relic",
+      "cluster": "Knowledge / Systems",
+      "summary": "Builds coordination and knowledge through open collaboration.",
+      "effects": [
+        "Increases Coordination and Knowledge.",
+        "Buffs Linux and future infrastructure cards."
+      ]
+    },
+    {
+      "id": "linux",
+      "name": "Linux",
+      "entityType": "Technology",
+      "rarity": "Relic",
+      "cluster": "Knowledge / Systems",
+      "summary": "Turns openness into durable infrastructure.",
+      "effects": [
+        "Improves future Technology or Infrastructure actions.",
+        "Pairs strongly with Open Source."
+      ]
+    },
+    {
+      "id": "the-internet",
+      "name": "The Internet",
+      "entityType": "Technology",
+      "rarity": "Mythic",
+      "cluster": "Knowledge / Systems",
+      "summary": "Massively amplifies coordination, influence, and truth-risk alike.",
+      "effects": [
+        "Amplifies Influence and Truth potential.",
+        "Can also amplify disorder if Instability is already high."
+      ]
+    },
+    {
+      "id": "china",
+      "name": "China",
+      "entityType": "Country",
+      "rarity": "Archive",
+      "cluster": "World Strategy / Power",
+      "summary": "Scales power through production, infrastructure, and coordination.",
+      "effects": [
+        "Gain immediate Power base when deployed.",
+        "Pairs strongly with Oil and Nuclear Energy for long-term scaling."
+      ]
+    },
+    {
+      "id": "oil",
+      "name": "Oil",
+      "entityType": "Resource",
+      "rarity": "Relic",
+      "cluster": "World Strategy / Power",
+      "summary": "High-output energy leverage with ecological and legitimacy cost.",
+      "effects": [
+        "Large short-term Power gain.",
+        "Increases Instability and ecological pressure over time."
+      ]
+    },
+    {
+      "id": "nuclear-energy",
+      "name": "Nuclear Energy",
+      "entityType": "Technology",
+      "rarity": "Legend",
+      "cluster": "World Strategy / Power",
+      "summary": "Long-term strategic power if coordination can sustain it.",
+      "effects": [
+        "Gain long-term Power and Stability.",
+        "Requires strong Coordination or Legitimacy suffers."
+      ]
+    }
+  ]
+}

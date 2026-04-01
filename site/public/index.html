@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERD: Legends of Humanity</title>
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <nav>
+    <a href="#" class="nav-logo" onclick="showPage('home')">ERD</a>
+    <div class="nav-links">
+      <a href="#" onclick="showPage('atlas')">📚 Atlas</a>
+      <a href="#" onclick="showPage('vote')">🗳️ Vote</a>
+      <a href="#" onclick="showPage('game')">🎮 Play</a>
+      <a href="https://github.com/legends-of-humanity/legends-of-humanity" target="_blank">⭐ GitHub</a>
+    </div>
+  </nav>
+
+  <main id="app">
+    <!-- HOME -->
+    <div id="page-home" class="page">
+      <div class="hero">
+        <h1>Legends of Humanity</h1>
+        <p class="hero-sub">Collect humanity. Play history. Fund peace.</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><span id="stat-total">0</span><label>Entities</label></div>
+          <div class="hero-stat"><span id="stat-proposals">0</span><label>Proposals</label></div>
+          <div class="hero-stat"><span id="stat-contributors">∞</span><label>Open Source</label></div>
+        </div>
+        <div class="hero-actions">
+          <button onclick="showPage('atlas')">Explore Atlas →</button>
+          <button class="btn-outline" onclick="showPage('game')">Play Now →</button>
+        </div>
+      </div>
+      <div class="featured" id="featured-cards"></div>
+    </div>
+
+    <!-- ATLAS -->
+    <div id="page-atlas" class="page" style="display:none">
+      <div class="atlas-header">
+        <h2>📚 Power Atlas</h2>
+        <p>Every entity sourced. Every claim verifiable.</p>
+        <div class="search-bar">
+          <input type="text" id="atlas-search" placeholder="Search entities..." oninput="searchAtlas()">
+          <select id="atlas-type" onchange="searchAtlas()">
+            <option value="">All Types</option>
+            <option value="Person">👤 Person</option>
+            <option value="Organization">🏛️ Organization</option>
+            <option value="Corporation">🏢 Corporation</option>
+            <option value="Country">🌍 Country</option>
+            <option value="Technology">⚡ Technology</option>
+            <option value="Movement">✊ Movement</option>
+            <option value="Idea">💡 Idea</option>
+            <option value="Resource">🛢️ Resource</option>
+            <option value="Institution">🏦 Institution</option>
+          </select>
+        </div>
+      </div>
+      <div id="atlas-results" class="entity-grid"></div>
+    </div>
+
+    <!-- VOTE -->
+    <div id="page-vote" class="page" style="display:none">
+      <div class="vote-header">
+        <h2>🗳️ Community Governance</h2>
+        <p>Propose new entities. Vote on what matters. Shape the atlas.</p>
+        <button onclick="showProposalForm()">+ Propose New Entity</button>
+      </div>
+      <div id="proposal-form" style="display:none" class="form-panel">
+        <h3>Propose a New Entity</h3>
+        <input type="text" id="prop-name" placeholder="Entity name (e.g. 'Greenpeace')">
+        <select id="prop-type">
+          <option value="Person">Person</option>
+          <option value="Organization">Organization</option>
+          <option value="Movement">Movement</option>
+          <option value="Technology">Technology</option>
+          <option value="Idea">Idea</option>
+          <option value="Resource">Resource</option>
+          <option value="Country">Country</option>
+        </select>
+        <textarea id="prop-reason" placeholder="Why should this entity be in ERD? What makes it significant?"></textarea>
+        <input type="text" id="prop-by" placeholder="Your name (optional)">
+        <button onclick="submitProposal()">Submit Proposal</button>
+      </div>
+      <h3 class="section-title">Active Proposals</h3>
+      <div id="proposals-list"></div>
+    </div>
+
+    <!-- GAME (iframe to game/) -->
+    <div id="page-game" class="page" style="display:none">
+      <div class="game-embed">
+        <h2>🎮 Play ERD</h2>
+        <p>Open two tabs to play against yourself, or share the link with a friend!</p>
+        <div class="game-frame-wrap">
+          <iframe id="game-frame" src="/game/" style="display:none"></iframe>
+          <button onclick="launchGame()">Launch Game →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ENTITY DETAIL MODAL -->
+    <div id="entity-modal" class="modal" style="display:none" onclick="if(event.target===this)this.style.display='none'">
+      <div class="modal-content">
+        <button class="modal-close" onclick="document.getElementById('entity-modal').style.display='none'">&times;</button>
+        <div id="entity-detail"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>ERD: Legends of Humanity — Open Source · <a href="https://github.com/legends-of-humanity/legends-of-humanity">GitHub</a> · MIT License</p>
+  </footer>
+
+  <script src="js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "erd-site",
+  "version": "0.3.0",
+  "description": "ERD: Legends of Humanity — Atlas, Voting & Game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "socket.io": "^4.7.0"
+  },
+  "license": "MIT"
+}

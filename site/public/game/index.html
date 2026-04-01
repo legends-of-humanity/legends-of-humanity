@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERD: Legends of Humanity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/game.css">
+</head>
+<body data-phase="setup">
+  <div class="app-shell">
+    <div class="ambient ambient-left"></div>
+    <div class="ambient ambient-right"></div>
+
+    <main id="app">
+      <section id="lobby" class="screen lobby-screen">
+        <div class="lobby-card">
+          <p class="eyebrow">ERD v2</p>
+          <h1>Legends of Humanity</h1>
+          <p class="lobby-copy">
+            Build power from real-world systems. Read the atlas. Win the board.
+          </p>
+
+          <div class="lobby-form">
+            <label class="field-label" for="player-name">Commander Name</label>
+            <input type="text" id="player-name" maxlength="20" placeholder="Enter your name" autofocus>
+            <div class="lobby-actions">
+              <button id="btn-join" class="btn btn-primary" type="button">Join Lobby</button>
+              <button id="btn-find" class="btn btn-secondary" type="button" hidden>Find Match</button>
+            </div>
+            <p id="lobby-status" class="status-line"></p>
+            <p id="match-status" class="status-line subtle"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="game-screen" class="screen game-screen" hidden>
+        <header class="topbar panel">
+          <div>
+            <p class="eyebrow">Live Match</p>
+            <h2>ERD Command Table</h2>
+          </div>
+          <div class="match-meta">
+            <div class="meta-chip">Turn <span id="turn-num">1</span>/<span id="max-turns">6</span></div>
+            <div class="meta-chip">vs <span id="opponent-name">Opponent</span></div>
+          </div>
+        </header>
+
+        <section class="phase-strip panel">
+          <div class="phase-node" data-phase-node="deploy">
+            <span class="phase-step">01</span>
+            <span class="phase-label">Deploy</span>
+          </div>
+          <div class="phase-node" data-phase-node="action">
+            <span class="phase-step">02</span>
+            <span class="phase-label">Action</span>
+          </div>
+          <div class="phase-node" data-phase-node="resolution">
+            <span class="phase-step">03</span>
+            <span class="phase-label">Resolution</span>
+          </div>
+          <div class="phase-readout">
+            Phase <span id="phase-name">Setup</span>
+          </div>
+        </section>
+
+        <section class="battlefield">
+          <section class="panel board-panel opponent-panel">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Opponent Area</p>
+                <h3 id="opp-name-display">Opponent</h3>
+              </div>
+              <div class="scoreline">
+                <div class="score-pill power">Power <span id="opp-power">0</span></div>
+                <div class="score-pill legitimacy">Legitimacy <span id="opp-legitimacy">0</span></div>
+                <div class="score-pill harmony">Harmony <span id="opp-harmony">0</span></div>
+              </div>
+            </div>
+            <div id="opponent-board" class="card-lane board-lane"></div>
+          </section>
+
+          <section class="panel shared-panel">
+            <div class="shared-header">
+              <p class="eyebrow">Shared State</p>
+              <h3>Global Instability</h3>
+            </div>
+            <div class="instability-track">
+              <div id="instability-fill" class="instability-fill"></div>
+            </div>
+            <div class="shared-stats">
+              <div class="shared-stat">Instability <span id="instability">0</span></div>
+              <div class="shared-stat">Energy Flow <span id="energy-flow">4</span></div>
+              <div class="shared-stat">Civilian Burden <span id="civilian-burden">0</span></div>
+            </div>
+          </section>
+
+          <section class="panel board-panel your-panel">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Your Board</p>
+                <h3 id="your-name-display">You</h3>
+              </div>
+              <div class="scoreline">
+                <div class="score-pill power">Power <span id="your-power">0</span></div>
+                <div class="score-pill legitimacy">Legitimacy <span id="your-legitimacy">0</span></div>
+                <div class="score-pill harmony">Harmony <span id="your-harmony">0</span></div>
+              </div>
+            </div>
+            <div id="board" class="card-lane board-lane"></div>
+          </section>
+
+          <section class="panel resource-panel">
+            <div class="section-head compact">
+              <div>
+                <p class="eyebrow">Economy</p>
+                <h3>Your Resources</h3>
+              </div>
+              <div id="resource-income" class="resource-income">Next yield: waiting</div>
+            </div>
+            <div id="resource-bar" class="resource-grid"></div>
+          </section>
+
+          <section id="action-section" class="panel action-panel" hidden>
+            <div class="section-head compact">
+              <div>
+                <p class="eyebrow">Commands</p>
+                <h3>Choose Actions</h3>
+              </div>
+              <div id="action-summary" class="resource-income">Spend resources to queue your turn</div>
+            </div>
+            <div id="action-slots" class="action-slots"></div>
+          </section>
+
+          <section class="panel hand-panel">
+            <div class="section-head compact">
+              <div>
+                <p class="eyebrow">Hand</p>
+                <h3>Your Hand <span class="hand-count">(<span id="hand-count">0</span>)</span></h3>
+              </div>
+              <div id="deploy-summary" class="resource-income">Select up to 2 cards to deploy</div>
+            </div>
+            <div id="hand" class="card-lane hand-lane"></div>
+          </section>
+
+          <section class="command-row panel">
+            <div class="command-copy">
+              <p class="eyebrow">Controls</p>
+              <p id="phase-instruction">Join a match to begin.</p>
+            </div>
+            <div class="command-buttons">
+              <button id="btn-ready" class="btn btn-secondary" type="button" hidden>Ready</button>
+              <button id="btn-deploy" class="btn btn-primary" type="button" hidden>Deploy Selected</button>
+              <button id="btn-submit-actions" class="btn btn-primary" type="button" hidden>Confirm Actions</button>
+            </div>
+          </section>
+
+          <section class="panel log-panel">
+            <div class="section-head compact">
+              <div>
+                <p class="eyebrow">Turn Feed</p>
+                <h3>Resolution Log</h3>
+              </div>
+            </div>
+            <div id="game-log" class="game-log"></div>
+          </section>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div id="card-modal" class="modal-shell" hidden>
+    <div id="modal-backdrop" class="modal-backdrop"></div>
+    <aside class="card-modal">
+      <button id="modal-close" class="modal-close" type="button" aria-label="Close details">Close</button>
+      <div class="modal-topline">
+        <span id="modal-rarity" class="modal-rarity">Legend</span>
+        <span id="modal-type" class="modal-type">Person</span>
+      </div>
+      <h3 id="modal-title">Card Title</h3>
+      <p id="modal-oneliner" class="modal-oneliner"></p>
+
+      <div class="modal-grid">
+        <div class="modal-stat-block">
+          <p class="modal-label">Deploy Cost</p>
+          <div id="modal-cost" class="cost-row"></div>
+        </div>
+        <div class="modal-stat-block">
+          <p class="modal-label">Generation</p>
+          <div id="modal-generation" class="cost-row"></div>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <p class="modal-label">Why This Matters</p>
+        <p id="modal-why"></p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-label">Context</p>
+        <p id="modal-context"></p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-label">Contradictions</p>
+        <p id="modal-contradictions"></p>
+      </div>
+      <div class="modal-section">
+        <p class="modal-label">Effects</p>
+        <ul id="modal-effects" class="modal-list"></ul>
+      </div>
+      <div class="modal-section">
+        <p class="modal-label">Connections</p>
+        <div id="modal-related" class="chip-row"></div>
+      </div>
+      <div class="modal-section">
+        <p class="modal-label">Judgment</p>
+        <div id="modal-judgment" class="judgment-grid"></div>
+      </div>
+      <div class="modal-section">
+        <p class="modal-label">Sources</p>
+        <div id="modal-sources" class="source-list"></div>
+      </div>
+    </aside>
+  </div>
+
+  <div id="game-over" class="overlay-shell" hidden>
+    <div class="overlay-card">
+      <p class="eyebrow">Match Complete</p>
+      <h2 id="game-over-title">Victory</h2>
+      <p id="game-over-reason" class="overlay-copy"></p>
+      <button class="btn btn-primary" type="button" onclick="location.reload()">Play Again</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="js/client.js"></script>
+</body>
+</html>
