@@ -2,909 +2,331 @@
   {
     "id": "gandhi",
     "name": "Mahatma Gandhi",
-    "aliases": [
-      "Mohandas Karamchand Gandhi",
-      "Gandhi"
-    ],
     "entityType": "Person",
+    "category": "Peace Maker",
     "rarity": "Legend",
-    "themes": [
-      "Peace"
-    ],
-    "tags": [
-      "nonviolence",
-      "anti-colonialism",
-      "peace"
-    ],
-    "oneLine": "Indian anti-colonial leader who turned nonviolent resistance into a world-scale political force.",
-    "whyItMatters": "Gandhi helped redefine resistance, legitimacy, and moral courage in politics.",
-    "context": "British colonial rule in India, anti-colonial mass mobilization, and global decolonization movements formed the world in which Gandhi’s influence expanded.",
-    "contradictions": "His legacy is globally revered but also debated for political, social, and personal contradictions.",
-    "judgment": {
-      "Peace contribution": "High",
-      "Dignity contribution": "High",
-      "Freedom contribution": "High",
-      "Knowledge contribution": "Medium",
-      "Truth contribution": "Medium",
-      "Long-term influence": "High",
-      "Moral complexity": "High"
-    },
-    "related": [
-      "Nonviolence",
-      "Nelson Mandela",
-      "Martin Luther King Jr.",
-      "Anti-colonial struggle"
-    ],
-    "sources": [
-      {
-        "title": "Encyclopaedia Britannica — Mahatma Gandhi",
-        "url": "https://www.britannica.com/biography/Mahatma-Gandhi",
-        "type": "reference"
-      },
-      {
-        "title": "History.com — Mahatma Gandhi",
-        "url": "https://www.history.com/topics/india/mahatma-gandhi",
-        "type": "reference"
-      }
-    ],
-    "confidence": "High-level draft"
-  },
-  {
-    "id": "malcolm-x",
-    "name": "Malcolm X",
-    "aliases": [
-      "El-Hajj Malik El-Shabazz"
-    ],
-    "entityType": "Person",
-    "rarity": "Legend",
-    "themes": [
-      "Dignity",
-      "Truth"
-    ],
-    "tags": [
-      "civil rights",
-      "dignity",
-      "truth"
-    ],
-    "oneLine": "A transformative voice of Black dignity, self-determination, and political clarity.",
-    "whyItMatters": "Malcolm X expanded the language of liberation far beyond mainstream respectability.",
-    "context": "He emerged during the U.S. civil rights era but widened toward anti-colonial, international, and structural analysis.",
-    "contradictions": "He is often flattened into a one-note symbol, obscuring his evolution, strategic intelligence, and moral seriousness.",
-    "judgment": {
-      "Dignity contribution": "High",
-      "Freedom contribution": "High",
-      "Truth contribution": "High",
-      "Peace contribution": "Medium",
-      "Long-term influence": "High",
-      "Moral complexity": "High",
-      "Harm / controversy": "Medium"
-    },
-    "related": [
-      "Civil Rights Movement",
-      "Freedom of Speech",
-      "Martin Luther King Jr.",
-      "Black liberation thought"
-    ],
-    "sources": [
-      {
-        "title": "Britannica — Malcolm X",
-        "url": "https://www.britannica.com/biography/Malcolm-X",
-        "type": "reference"
-      },
-      {
-        "title": "The Malcolm X Project at Columbia University",
-        "url": "https://malcolmxproject.columbia.edu/",
-        "type": "archive"
-      }
-    ],
-    "confidence": "High-level draft"
-  },
-  {
-    "id": "open-source",
-    "name": "Open Source",
-    "aliases": [
-      "Open-source software",
-      "OSS"
-    ],
-    "entityType": "Idea",
-    "rarity": "Relic",
-    "themes": [
-      "Knowledge",
-      "Truth"
-    ],
-    "tags": [
-      "software",
-      "collaboration",
-      "internet"
-    ],
-    "oneLine": "The principle that knowledge and code can be built, shared, and improved collaboratively in public.",
-    "whyItMatters": "Open source is one of the strongest coordination models of the digital age.",
-    "context": "The open-source ethos emerged through software culture but now influences infrastructure, public knowledge, and collaborative governance.",
-    "contradictions": "Open systems can still be underfunded, exploited, or absorbed into private value extraction.",
-    "judgment": {
-      "Knowledge contribution": "High",
-      "Truth contribution": "Medium",
-      "Coordination contribution": "High",
-      "Freedom contribution": "Medium",
-      "Long-term influence": "High",
-      "Moral complexity": "Medium",
-      "Harm / controversy": "Low-Medium"
-    },
-    "related": [
-      "Linux",
-      "The Internet",
-      "Open Knowledge Movement",
-      "Decentralization"
-    ],
-    "sources": [
-      {
-        "title": "Open Source Initiative",
-        "url": "https://opensource.org/",
-        "type": "primary"
-      },
-      {
-        "title": "Britannica — Open-source software",
-        "url": "https://www.britannica.com/technology/open-source-software",
-        "type": "reference"
-      }
-    ],
-    "confidence": "High-level draft"
-  },
-  {
-    "id": "nonviolence",
-    "name": "Nonviolence",
-    "aliases": [
-      "Non-violence",
-      "Ahimsa"
-    ],
-    "entityType": "Idea",
-    "rarity": "Legend",
-    "themes": [
-      "Peace"
-    ],
-    "tags": [
-      "peace",
-      "resistance",
-      "ethics"
-    ],
-    "oneLine": "A moral and political strategy that seeks transformation without reproducing cycles of violent domination.",
-    "whyItMatters": "Nonviolence became one of the most powerful civilizational ideas for collective action and peace-oriented resistance.",
-    "context": "It appears in multiple philosophical and religious traditions, but became globally influential as a strategic and political force in anti-colonial and civil-rights struggles.",
-    "contradictions": "Its effectiveness depends on context, discipline, and the character of the opposing system; it is often romanticized or oversimplified.",
-    "judgment": {
-      "Peace contribution": "High",
-      "Dignity contribution": "High",
-      "Freedom contribution": "Medium-High",
-      "Coordination contribution": "Medium",
-      "Long-term influence": "High",
-      "Moral complexity": "Medium-High"
-    },
-    "related": [
-      "Mahatma Gandhi",
-      "Civil Rights Movement",
-      "Nelson Mandela",
-      "Martin Luther King Jr."
-    ],
-    "sources": [
-      {
-        "title": "Britannica — nonviolence",
-        "url": "https://www.britannica.com/topic/nonviolence",
-        "type": "reference"
-      }
-    ],
-    "confidence": "High-level draft"
-  },
-  {
-    "id": "civil-rights-movement",
-    "name": "Civil Rights Movement",
-    "aliases": [
-      "U.S. Civil Rights Movement"
-    ],
-    "entityType": "Movement",
-    "rarity": "Mythic",
-    "themes": [
-      "Dignity",
-      "Justice"
-    ],
-    "tags": [
-      "justice",
-      "equality",
-      "resistance",
-      "dignity"
-    ],
-    "oneLine": "A mass struggle against racial oppression that reshaped law, legitimacy, and moral consciousness.",
-    "whyItMatters": "It demonstrates how organized, sustained moral struggle can force structural change.",
-    "context": "The movement emerged against systems of segregation and racial oppression, using litigation, protest, organizing, and moral confrontation to transform law and public legitimacy.",
-    "contradictions": "Public memory often sanitizes the movement, flattening its internal tensions, strategic diversity, and unfinished goals.",
-    "judgment": {
-      "Dignity contribution": "High",
-      "Freedom contribution": "High",
-      "Peace contribution": "Medium",
-      "Truth contribution": "Medium",
-      "Long-term influence": "High",
-      "Moral complexity": "High"
-    },
-    "related": [
-      "Rosa Parks",
-      "Malcolm X",
-      "Martin Luther King Jr.",
-      "Nonviolence"
-    ],
-    "sources": [
-      {
-        "title": "Britannica — civil rights movement",
-        "url": "https://www.britannica.com/event/American-civil-rights-movement",
-        "type": "reference"
-      },
-      {
-        "title": "National Archives — Civil Rights Records",
-        "url": "https://www.archives.gov/research/african-americans/individuals/civil-rights.html",
-        "type": "archive"
-      }
-    ],
-    "confidence": "High-level draft"
-  },
-  {
-    "id": "linux",
-    "name": "Linux",
-    "aliases": [
-      "Linux kernel"
-    ],
-    "entityType": "Technology",
-    "rarity": "Relic",
-    "themes": [
-      "Knowledge",
-      "Truth"
-    ],
-    "tags": [
-      "open source",
-      "infrastructure",
-      "computing"
-    ],
-    "oneLine": "An open-source kernel that became critical infrastructure for the digital world.",
-    "whyItMatters": "Linux demonstrates how public collaboration can generate world-scale technical infrastructure.",
-    "context": "Created in the early 1990s, Linux grew from a software project into a foundational layer for servers, embedded systems, cloud infrastructure, and countless digital services.",
-    "contradictions": "Its openness did not prevent concentration of power in the ecosystems built on top of it, nor did it eliminate labor and funding imbalances.",
-    "judgment": {
-      "Knowledge contribution": "High",
-      "Coordination contribution": "High",
-      "Truth contribution": "Medium",
-      "Freedom contribution": "Medium",
-      "Long-term influence": "High",
-      "Moral complexity": "Medium"
-    },
-    "related": [
-      "Open Source",
-      "The Internet",
-      "Semiconductor Manufacturing"
-    ],
-    "sources": [
-      {
-        "title": "Britannica — Linux",
-        "url": "https://www.britannica.com/technology/Linux",
-        "type": "reference"
-      },
-      {
-        "title": "The Linux Kernel Archives",
-        "url": "https://www.kernel.org/",
-        "type": "primary"
-      }
-    ],
-    "confidence": "High-level draft"
+    "themes": ["Peace", "Dignity"],
+    "tags": ["nonviolence", "freedom", "peace", "india"],
+    "oneLine": "Proved that nonviolent resistance can defeat an empire.",
+    "whyItMatters": "Gandhi showed the world that the strongest weapon is refusing to fight back. His methods inspired every major peace movement that followed.",
+    "context": "Led India to independence from British colonial rule through nonviolent civil disobedience, salt marches, and hunger strikes.",
+    "sources": [{"title": "Encyclopaedia Britannica — Mahatma Gandhi", "url": "https://www.britannica.com/biography/Mahatma-Gandhi"}],
+    "related": ["nonviolence", "martin-luther-king-jr", "nelson-mandela"]
   },
   {
     "id": "martin-luther-king-jr",
     "name": "Martin Luther King Jr.",
-    "aliases": [
-      "MLK",
-      "Martin Luther King"
-    ],
     "entityType": "Person",
+    "category": "Peace Maker",
     "rarity": "Legend",
-    "themes": [
-      "Peace",
-      "Dignity"
-    ],
-    "tags": [
-      "civil rights",
-      "nonviolence",
-      "justice"
-    ],
-    "oneLine": "Civil rights leader who fused nonviolent struggle, moral rhetoric, and mass organizing into a transformative public force.",
-    "whyItMatters": "MLK helped make civil rights and nonviolent resistance legible as universal democratic and moral struggles.",
-    "context": "He emerged as a leading figure in the U.S. civil rights movement through campaigns, speeches, and organizing that confronted segregation, racism, and economic injustice.",
-    "contradictions": "Public memory often narrows him into a safe symbol while ignoring his wider critique of militarism, poverty, and structural power.",
-    "judgment": {
-      "Peace contribution": "High",
-      "Dignity contribution": "High",
-      "Freedom contribution": "High",
-      "Truth contribution": "Medium",
-      "Long-term influence": "High",
-      "Moral complexity": "Medium-High"
-    },
-    "related": [
-      "Mahatma Gandhi",
-      "Nonviolence",
-      "Civil Rights Movement",
-      "Malcolm X",
-      "Rosa Parks"
-    ],
-    "sources": [
-      {
-        "title": "Britannica — Martin Luther King, Jr.",
-        "url": "https://www.britannica.com/biography/Martin-Luther-King-Jr",
-        "type": "reference"
-      },
-      {
-        "title": "The Martin Luther King, Jr. Research and Education Institute",
-        "url": "https://kinginstitute.stanford.edu/",
-        "type": "archive"
-      }
-    ],
-    "confidence": "High-level draft"
+    "themes": ["Peace", "Dignity"],
+    "tags": ["civil-rights", "equality", "peace", "dream"],
+    "oneLine": "Dreamed of a world where people are judged by character, not color.",
+    "whyItMatters": "MLK transformed the civil rights movement into a moral force that changed laws, hearts, and the course of American history — without firing a single shot.",
+    "context": "Led the American civil rights movement through nonviolent protest, culminating in the Civil Rights Act of 1964.",
+    "sources": [{"title": "The King Center", "url": "https://thekingcenter.org/about-tkc/martin-luther-king-jr/"}],
+    "related": ["gandhi", "rosa-parks", "civil-rights-movement"]
   },
   {
     "id": "nelson-mandela",
     "name": "Nelson Mandela",
-    "aliases": [
-      "Mandela",
-      "Madiba"
-    ],
     "entityType": "Person",
+    "category": "Peace Maker",
     "rarity": "Legend",
-    "themes": [
-      "Peace",
-      "Dignity"
-    ],
-    "tags": [
-      "anti-apartheid",
-      "reconciliation",
-      "leadership"
-    ],
-    "oneLine": "Anti-apartheid leader whose life became a global symbol of resistance, endurance, and reconciliation.",
-    "whyItMatters": "Mandela represents the rare combination of resistance legitimacy and post-conflict reconciliation power.",
-    "context": "He emerged from the anti-apartheid struggle in South Africa and later became a global symbol of political endurance and negotiated transition.",
-    "contradictions": "His symbolic role can overshadow the broader movement, historical violence, and structural realities surrounding apartheid and transition.",
-    "judgment": {
-      "Peace contribution": "High",
-      "Dignity contribution": "High",
-      "Freedom contribution": "High",
-      "Coordination contribution": "High",
-      "Long-term influence": "High",
-      "Moral complexity": "High"
-    },
-    "related": [
-      "Anti-Apartheid Movement",
-      "Mahatma Gandhi",
-      "Nonviolence"
-    ],
-    "sources": [
-      {
-        "title": "Britannica — Nelson Mandela",
-        "url": "https://www.britannica.com/biography/Nelson-Mandela",
-        "type": "reference"
-      },
-      {
-        "title": "Nelson Mandela Foundation",
-        "url": "https://www.nelsonmandela.org/",
-        "type": "archive"
-      }
-    ],
-    "confidence": "High-level draft"
+    "themes": ["Peace", "Dignity", "Reconciliation"],
+    "tags": ["ubuntu", "forgiveness", "south-africa", "reconciliation"],
+    "oneLine": "Spent 27 years in prison and came out choosing forgiveness over revenge.",
+    "whyItMatters": "Mandela proved that reconciliation is stronger than retaliation. He could have led a war — instead he built a rainbow nation.",
+    "context": "After 27 years imprisoned, became South Africa's first democratically elected president and chose truth and reconciliation over vengeance.",
+    "sources": [{"title": "Nelson Mandela Foundation", "url": "https://www.nelsonmandela.org/content/page/biography"}],
+    "related": ["gandhi", "desmond-tutu", "anti-apartheid-movement"]
   },
   {
     "id": "rosa-parks",
     "name": "Rosa Parks",
-    "aliases": [
-      "Rosa Louise McCauley Parks"
-    ],
     "entityType": "Person",
+    "category": "Peace Maker",
     "rarity": "Relic",
-    "themes": [
-      "Dignity",
-      "Justice"
-    ],
-    "tags": [
-      "civil rights",
-      "resistance",
-      "dignity"
-    ],
-    "oneLine": "Civil rights figure whose refusal to surrender her bus seat became a catalytic act of resistance.",
-    "whyItMatters": "Rosa Parks shows how a single act, in the right context, can become history-shaping when connected to organized struggle.",
-    "context": "Her act of resistance in Montgomery became a flashpoint within a much larger movement of Black organizing, legal struggle, and strategic protest.",
-    "contradictions": "Public memory often simplifies her into an accidental heroine, obscuring her political consciousness and movement context.",
-    "judgment": {
-      "Dignity contribution": "High",
-      "Freedom contribution": "High",
-      "Peace contribution": "Medium",
-      "Truth contribution": "Medium",
-      "Long-term influence": "High",
-      "Moral complexity": "Medium"
-    },
-    "related": [
-      "Civil Rights Movement",
-      "Martin Luther King Jr.",
-      "Malcolm X"
-    ],
-    "sources": [
-      {
-        "title": "Britannica — Rosa Parks",
-        "url": "https://www.britannica.com/biography/Rosa-Parks",
-        "type": "reference"
-      },
-      {
-        "title": "National Women's History Museum — Rosa Parks",
-        "url": "https://www.womenshistory.org/education-resources/biographies/rosa-parks",
-        "type": "reference"
-      }
-    ],
-    "confidence": "High-level draft"
+    "themes": ["Dignity", "Courage"],
+    "tags": ["civil-rights", "courage", "dignity", "quiet-strength"],
+    "oneLine": "Sat down so an entire nation could stand up.",
+    "whyItMatters": "One quiet act of refusal sparked the Montgomery Bus Boycott and ignited the modern civil rights movement. Proof that courage doesn't need to be loud.",
+    "context": "Refused to give up her bus seat in Montgomery, Alabama in 1955, sparking a 381-day boycott.",
+    "sources": [{"title": "Rosa Parks Biography — National Women's History Museum", "url": "https://www.womenshistory.org/education-resources/biographies/rosa-parks"}],
+    "related": ["martin-luther-king-jr", "civil-rights-movement"]
   },
   {
-    "id": "the-internet",
-    "name": "The Internet",
-    "aliases": [
-      "Internet"
-    ],
-    "entityType": "Technology",
+    "id": "desmond-tutu",
+    "name": "Desmond Tutu",
+    "entityType": "Person",
+    "category": "Peace Maker",
+    "rarity": "Legend",
+    "themes": ["Peace", "Reconciliation", "Love"],
+    "tags": ["ubuntu", "forgiveness", "truth", "south-africa"],
+    "oneLine": "Taught a nation that there is no future without forgiveness.",
+    "whyItMatters": "Led South Africa's Truth and Reconciliation Commission, proving that facing painful truth together heals deeper than punishment.",
+    "context": "Nobel Peace Prize winner who fought apartheid through moral persuasion and later chaired the Truth and Reconciliation Commission.",
+    "sources": [{"title": "Nobel Prize — Desmond Tutu", "url": "https://www.nobelprize.org/prizes/peace/1984/tutu/biographical/"}],
+    "related": ["nelson-mandela", "anti-apartheid-movement"]
+  },
+  {
+    "id": "malala-yousafzai",
+    "name": "Malala Yousafzai",
+    "entityType": "Person",
+    "category": "Knowledge Liberator",
+    "rarity": "Legend",
+    "themes": ["Knowledge", "Courage", "Dignity"],
+    "tags": ["education", "girls-rights", "courage", "pakistan"],
+    "oneLine": "They shot her for wanting to go to school. She kept going.",
+    "whyItMatters": "Youngest Nobel Prize laureate. Survived an assassination attempt and turned her pain into a global movement for girls' education.",
+    "context": "Shot by the Taliban at age 15 for advocating girls' education. Recovered and became the world's most prominent advocate for children's right to learn.",
+    "sources": [{"title": "Malala Fund", "url": "https://malala.org/malalas-story"}],
+    "related": ["education-for-all"]
+  },
+  {
+    "id": "wangari-maathai",
+    "name": "Wangari Maathai",
+    "entityType": "Person",
+    "category": "Nature Guardian",
+    "rarity": "Legend",
+    "themes": ["Nature", "Community"],
+    "tags": ["trees", "kenya", "environment", "women", "grassroots"],
+    "oneLine": "Planted 51 million trees and proved that healing the earth heals communities.",
+    "whyItMatters": "Founded the Green Belt Movement, empowering rural women to plant trees, fight deforestation, and build sustainable livelihoods. First African woman to win the Nobel Peace Prize.",
+    "context": "Started with one tree in her backyard in Kenya. Her movement grew to plant over 51 million trees across Africa.",
+    "sources": [{"title": "Green Belt Movement", "url": "https://www.greenbeltmovement.org/wangari-maathai"}],
+    "related": ["green-belt-movement", "reforestation"]
+  },
+  {
+    "id": "jane-goodall",
+    "name": "Jane Goodall",
+    "entityType": "Person",
+    "category": "Nature Guardian",
+    "rarity": "Legend",
+    "themes": ["Nature", "Animals", "Love"],
+    "tags": ["chimpanzees", "conservation", "animals", "empathy"],
+    "oneLine": "Lived with chimpanzees and taught humanity that we are not alone in having souls.",
+    "whyItMatters": "Revolutionized our understanding of animals as feeling, thinking beings. At 90+, still travels 300 days a year fighting for nature.",
+    "context": "Pioneered primate research in Tanzania, proved chimpanzees use tools and have emotions, then dedicated her life to conservation.",
+    "sources": [{"title": "Jane Goodall Institute", "url": "https://janegoodall.org/our-story/about-jane/"}],
+    "related": ["animal-rights-movement", "conservation"]
+  },
+  {
+    "id": "greta-thunberg",
+    "name": "Greta Thunberg",
+    "entityType": "Person",
+    "category": "Nature Guardian",
+    "rarity": "Relic",
+    "themes": ["Nature", "Truth", "Courage"],
+    "tags": ["climate", "youth", "activism", "truth"],
+    "oneLine": "A teenager who looked the most powerful people on earth in the eye and said: you are failing us.",
+    "whyItMatters": "Started alone with a sign outside Swedish parliament. Sparked a global youth climate movement of millions. Proved that age is no barrier to moral authority.",
+    "context": "Began her school strike for climate in 2018 at age 15, catalyzing Fridays for Future and a worldwide wave of climate activism.",
+    "sources": [{"title": "Fridays for Future", "url": "https://fridaysforfuture.org/"}],
+    "related": ["climate-activism", "wangari-maathai"]
+  },
+  {
+    "id": "aaron-swartz",
+    "name": "Aaron Swartz",
+    "entityType": "Person",
+    "category": "Knowledge Liberator",
+    "rarity": "Relic",
+    "themes": ["Knowledge", "Freedom", "Truth"],
+    "tags": ["open-access", "internet", "freedom", "hacker"],
+    "oneLine": "Believed knowledge should be free and gave his life fighting for it.",
+    "whyItMatters": "Co-created RSS at 14, helped build Creative Commons and Reddit. Fought to make academic research freely accessible. His story is a reminder of what we lose when the system punishes idealism.",
+    "context": "Brilliant programmer and activist who advocated for open access to information. Faced federal charges for downloading academic papers. Died at 26.",
+    "sources": [{"title": "The Internet's Own Boy (Documentary)", "url": "https://archive.org/details/TheInternetsOwnBoyTheStoryOfAaronSwartz"}],
+    "related": ["open-source", "open-knowledge-movement"]
+  },
+  {
+    "id": "tim-berners-lee",
+    "name": "Tim Berners-Lee",
+    "entityType": "Person",
+    "category": "Knowledge Liberator",
+    "rarity": "Legend",
+    "themes": ["Knowledge", "Innovation"],
+    "tags": ["internet", "web", "open", "free"],
+    "oneLine": "Invented the World Wide Web and gave it away for free.",
+    "whyItMatters": "Could have been the richest person alive. Instead, he made the web open and free for everyone. That single decision changed civilization more than almost any invention in history.",
+    "context": "Created the World Wide Web in 1989 at CERN and insisted it remain open, non-proprietary, and free to use.",
+    "sources": [{"title": "World Wide Web Foundation", "url": "https://webfoundation.org/about/sir-tim-berners-lee/"}],
+    "related": ["the-internet", "open-source"]
+  },
+  {
+    "id": "linus-torvalds",
+    "name": "Linus Torvalds",
+    "entityType": "Person",
+    "category": "Knowledge Liberator",
+    "rarity": "Relic",
+    "themes": ["Knowledge", "Innovation"],
+    "tags": ["linux", "open-source", "software", "collaboration"],
+    "oneLine": "Built the operating system the world runs on — and let everyone have it for free.",
+    "whyItMatters": "Linux runs 96% of the top million web servers, all Android phones, most supercomputers, and the International Space Station. All open source. All free.",
+    "context": "Created Linux as a student in 1991, starting a revolution in collaborative open-source software development.",
+    "sources": [{"title": "Linux Foundation — About Linus Torvalds", "url": "https://www.linuxfoundation.org/about/leadership"}],
+    "related": ["linux", "open-source"]
+  },
+  {
+    "id": "marie-curie",
+    "name": "Marie Curie",
+    "entityType": "Person",
+    "category": "Healer",
+    "rarity": "Legend",
+    "themes": ["Knowledge", "Innovation", "Courage"],
+    "tags": ["science", "radioactivity", "first-woman", "sacrifice"],
+    "oneLine": "Discovered radioactivity, won two Nobel Prizes, and died from her own research — because she refused to stop helping.",
+    "whyItMatters": "First woman to win a Nobel Prize. First person to win two. Drove mobile X-ray units to the front lines of WWI to save soldiers. Never patented her discoveries.",
+    "context": "Pioneered research on radioactivity, discovered polonium and radium, and insisted her findings belong to humanity, not profit.",
+    "sources": [{"title": "Nobel Prize — Marie Curie", "url": "https://www.nobelprize.org/prizes/physics/1903/marie-curie/biographical/"}],
+    "related": ["science-for-all"]
+  },
+  {
+    "id": "muhammad-ali",
+    "name": "Muhammad Ali",
+    "entityType": "Person",
+    "category": "Peace Maker",
+    "rarity": "Legend",
+    "themes": ["Dignity", "Courage", "Peace"],
+    "tags": ["boxing", "conscientious-objector", "courage", "dignity"],
+    "oneLine": "The greatest fighter who ever lived — because he knew when NOT to fight.",
+    "whyItMatters": "Refused to fight in Vietnam, was stripped of his title, risked prison — because he believed killing people who never harmed him was wrong. Lost everything and got it all back through principle.",
+    "context": "World heavyweight champion who sacrificed his career and freedom to stand against the Vietnam War as a conscientious objector.",
+    "sources": [{"title": "Muhammad Ali Center", "url": "https://alicenter.org/muhammad-ali/"}],
+    "related": ["nonviolence"]
+  },
+  {
+    "id": "bob-marley",
+    "name": "Bob Marley",
+    "entityType": "Person",
+    "category": "Community Builder",
+    "rarity": "Legend",
+    "themes": ["Peace", "Love", "Community"],
+    "tags": ["music", "reggae", "love", "unity", "jamaica"],
+    "oneLine": "Used music to make the whole world feel like one family.",
+    "whyItMatters": "Brought reggae and a message of love, resistance, and unity to every corner of the earth. Two days after being shot, played a peace concert to unite warring political factions in Jamaica.",
+    "context": "From the slums of Trenchtown to a global icon. His music became the soundtrack of liberation movements across Africa, the Americas, and beyond.",
+    "sources": [{"title": "Bob Marley Official", "url": "https://www.bobmarley.com/history/"}],
+    "related": ["music-as-resistance"]
+  },
+  {
+    "id": "nonviolence",
+    "name": "Nonviolence",
+    "entityType": "Idea",
+    "category": "Peace",
+    "rarity": "Legend",
+    "themes": ["Peace", "Love"],
+    "tags": ["ahimsa", "peace", "resistance", "strength"],
+    "oneLine": "The radical idea that not fighting back is the strongest thing you can do.",
+    "whyItMatters": "Every major successful liberation movement of the 20th century used nonviolence. It works not because it's passive, but because it exposes injustice without becoming it.",
+    "related": ["gandhi", "martin-luther-king-jr"]
+  },
+  {
+    "id": "open-source",
+    "name": "Open Source",
+    "entityType": "Idea",
+    "category": "Knowledge",
+    "rarity": "Relic",
+    "themes": ["Knowledge", "Community"],
+    "tags": ["software", "free", "collaboration", "commons"],
+    "oneLine": "What if the most powerful tools were built by everyone, owned by no one, and free for all?",
+    "whyItMatters": "Open source proved that collaboration without profit motive can outperform corporate development. It runs the internet, your phone, and most of modern civilization.",
+    "related": ["linus-torvalds", "tim-berners-lee", "aaron-swartz", "linux"]
+  },
+  {
+    "id": "ubuntu",
+    "name": "Ubuntu",
+    "entityType": "Idea",
+    "category": "Love",
+    "rarity": "Legend",
+    "themes": ["Love", "Community"],
+    "tags": ["philosophy", "africa", "humanity", "interconnection"],
+    "oneLine": "I am because we are.",
+    "whyItMatters": "An African philosophy that says a person is a person through other persons. Your humanity is tied to mine. We cannot be fully human alone. The antidote to individualism.",
+    "related": ["nelson-mandela", "desmond-tutu"]
+  },
+  {
+    "id": "civil-rights-movement",
+    "name": "Civil Rights Movement",
+    "entityType": "Movement",
+    "category": "Dignity",
     "rarity": "Mythic",
-    "themes": [
-      "Knowledge",
-      "Coordination"
-    ],
-    "tags": [
-      "network",
-      "communication",
-      "infrastructure",
-      "information"
-    ],
-    "oneLine": "A global network system that transformed communication, coordination, publishing, and power.",
-    "whyItMatters": "The internet reshaped how humans share knowledge, build communities, coordinate work, spread propaganda, and contest truth.",
-    "context": "Built from layered network and computing systems, the internet evolved from research and military origins into global civilian infrastructure with enormous social and political consequences.",
-    "contradictions": "It expanded access and coordination while also accelerating surveillance, fragmentation, manipulation, and attention capture.",
-    "judgment": {
-      "Knowledge contribution": "High",
-      "Coordination contribution": "High",
-      "Truth contribution": "Medium-Low",
-      "Freedom contribution": "Medium-High",
-      "Long-term influence": "Very High",
-      "Moral complexity": "Very High"
-    },
-    "related": [
-      "Open Source",
-      "Linux",
-      "Freedom of Speech",
-      "United Nations"
-    ],
-    "sources": [
-      {
-        "title": "Britannica — Internet",
-        "url": "https://www.britannica.com/technology/Internet",
-        "type": "reference"
-      },
-      {
-        "title": "Internet Society — History and open internet resources",
-        "url": "https://www.internetsociety.org/internet/history-internet/brief-history-internet/",
-        "type": "reference"
-      }
-    ],
-    "confidence": "High-level draft"
+    "themes": ["Dignity", "Peace"],
+    "tags": ["equality", "justice", "america", "nonviolent"],
+    "oneLine": "Millions of ordinary people who decided they would no longer accept being treated as less than human.",
+    "whyItMatters": "Changed laws, changed hearts, changed America — through sit-ins, marches, freedom rides, and an absolute refusal to accept injustice. All without firing a shot.",
+    "related": ["martin-luther-king-jr", "rosa-parks"]
   },
   {
     "id": "anti-apartheid-movement",
     "name": "Anti-Apartheid Movement",
-    "aliases": [
-      "South African anti-apartheid movement"
-    ],
     "entityType": "Movement",
+    "category": "Dignity",
     "rarity": "Legend",
-    "themes": [
-      "Dignity",
-      "Freedom"
-    ],
-    "tags": [
-      "anti-apartheid",
-      "resistance",
-      "justice",
-      "freedom"
-    ],
-    "oneLine": "A long struggle against racial domination in South Africa that reshaped global moral and political legitimacy.",
-    "whyItMatters": "The anti-apartheid movement shows how national resistance and international pressure can combine to delegitimize entrenched oppression.",
-    "context": "It included local organizers, global solidarity networks, imprisoned leaders, and institutional pressure campaigns across decades.",
-    "contradictions": "Its memory can become overly personalized around singular leaders, obscuring the complexity, violence, and mass nature of the struggle.",
-    "judgment": {
-      "Dignity contribution": "High",
-      "Freedom contribution": "High",
-      "Peace contribution": "Medium",
-      "Coordination contribution": "High",
-      "Long-term influence": "High",
-      "Moral complexity": "High"
-    },
-    "related": [
-      "Nelson Mandela",
-      "United Nations",
-      "Nonviolence"
-    ],
-    "sources": [
-      {
-        "title": "Britannica — apartheid",
-        "url": "https://www.britannica.com/topic/apartheid",
-        "type": "reference"
-      },
-      {
-        "title": "South African History Online — Anti-apartheid struggle",
-        "url": "https://www.sahistory.org.za/article/anti-apartheid-struggle-south-africa-1912-1994",
-        "type": "archive"
-      }
-    ],
-    "confidence": "High-level draft"
+    "themes": ["Dignity", "Peace"],
+    "tags": ["south-africa", "freedom", "global-solidarity"],
+    "oneLine": "A global movement that said: no one is free while others are oppressed.",
+    "whyItMatters": "United people across every continent against racial segregation in South Africa, proving that international solidarity can bring down even the most entrenched systems of oppression.",
+    "related": ["nelson-mandela", "desmond-tutu"]
   },
   {
-    "id": "freedom-of-speech",
-    "name": "Freedom of Speech",
-    "aliases": [
-      "Free speech",
-      "Freedom of expression"
-    ],
-    "entityType": "Idea",
+    "id": "climate-activism",
+    "name": "Climate Activism",
+    "entityType": "Movement",
+    "category": "Nature",
     "rarity": "Relic",
-    "themes": [
-      "Truth",
-      "Freedom"
-    ],
-    "tags": [
-      "speech",
-      "rights",
-      "expression",
-      "truth"
-    ],
-    "oneLine": "A foundational principle protecting the ability to speak, publish, dissent, and contest power.",
-    "whyItMatters": "Freedom of speech is central to democratic contestation, truth-seeking, artistic expression, and resistance to censorship.",
-    "context": "The idea evolved across legal, political, philosophical, and media systems, with different societies balancing it differently against harm and order.",
-    "contradictions": "It can protect truth-seeking and dissent while also being invoked to shield manipulation, harassment, and destructive speech.",
-    "judgment": {
-      "Truth contribution": "High",
-      "Freedom contribution": "High",
-      "Dignity contribution": "Medium",
-      "Peace contribution": "Low-Medium",
-      "Long-term influence": "High",
-      "Moral complexity": "High"
-    },
-    "related": [
-      "Malcolm X",
-      "The Internet",
-      "United Nations"
-    ],
-    "sources": [
-      {
-        "title": "Britannica — freedom of speech",
-        "url": "https://www.britannica.com/topic/freedom-of-speech",
-        "type": "reference"
-      },
-      {
-        "title": "UDHR Article 19",
-        "url": "https://www.un.org/en/about-us/universal-declaration-of-human-rights",
-        "type": "primary"
-      }
-    ],
-    "confidence": "High-level draft"
-  },
-  {
-    "id": "united-nations",
-    "name": "United Nations",
-    "aliases": [
-      "UN"
-    ],
-    "entityType": "Organization",
-    "rarity": "Archive",
-    "themes": [
-      "Coordination",
-      "Peace"
-    ],
-    "tags": [
-      "institution",
-      "global governance",
-      "peace",
-      "coordination"
-    ],
-    "oneLine": "A global institution created to coordinate states, reduce conflict, and articulate shared norms after world war.",
-    "whyItMatters": "The UN represents one of the clearest attempts to formalize global coordination, rights language, and peace-oriented legitimacy at planetary scale.",
-    "context": "It emerged after World War II as a response to catastrophic conflict and the need for institutions capable of reducing interstate violence and organizing collective action.",
-    "contradictions": "The UN carries strong symbolic and institutional value but is constrained by power politics, veto structures, uneven enforcement, and legitimacy gaps.",
-    "judgment": {
-      "Peace contribution": "Medium-High",
-      "Coordination contribution": "High",
-      "Dignity contribution": "Medium",
-      "Truth contribution": "Medium",
-      "Long-term influence": "High",
-      "Moral complexity": "High"
-    },
-    "related": [
-      "Anti-Apartheid Movement",
-      "Freedom of Speech",
-      "The Internet",
-      "China"
-    ],
-    "sources": [
-      {
-        "title": "United Nations — Charter and overview",
-        "url": "https://www.un.org/en/about-us/un-charter",
-        "type": "primary"
-      },
-      {
-        "title": "Britannica — United Nations",
-        "url": "https://www.britannica.com/topic/United-Nations",
-        "type": "reference"
-      }
-    ],
-    "confidence": "High-level draft"
+    "themes": ["Nature", "Truth", "Community"],
+    "tags": ["climate", "environment", "youth", "future"],
+    "oneLine": "The generation that said: this is our planet too, and you're destroying it.",
+    "whyItMatters": "Forced climate onto every government's agenda. Shifted trillions in investment away from fossil fuels. Led by young people who will live with the consequences.",
+    "related": ["greta-thunberg", "wangari-maathai"]
   },
   {
     "id": "open-knowledge-movement",
     "name": "Open Knowledge Movement",
-    "aliases": [
-      "Open knowledge",
-      "Open knowledge ecosystem"
-    ],
     "entityType": "Movement",
+    "category": "Knowledge",
     "rarity": "Relic",
-    "themes": [
-      "Knowledge",
-      "Coordination"
-    ],
-    "tags": [
-      "knowledge",
-      "commons",
-      "internet",
-      "governance"
-    ],
-    "oneLine": "A movement to make knowledge more accessible, reusable, and collectively governable across the digital commons.",
-    "whyItMatters": "It connects public knowledge, digital infrastructure, science, and institutional design into one of the clearest non-state pathways for civilizational learning.",
-    "context": "The movement grew through free culture, open-access, open-data, and collaborative internet communities that treated knowledge as a commons rather than a purely proprietary asset.",
-    "contradictions": "Openness expands access and reuse, but quality control, labor sustainability, governance capture, and platform dependence remain persistent tensions.",
-    "judgment": {
-      "Knowledge contribution": "High",
-      "Coordination contribution": "High",
-      "Truth contribution": "Medium-High",
-      "Freedom contribution": "Medium",
-      "Long-term influence": "High",
-      "Moral complexity": "Medium-High",
-      "Harm / controversy": "Low-Medium"
-    },
-    "related": [
-      "Open Source",
-      "The Internet",
-      "Freedom of Speech",
-      "United Nations",
-      "Decentralization"
-    ],
-    "sources": [
-      {
-        "title": "Open Knowledge Foundation — What is open knowledge?",
-        "url": "https://okfn.org/opendata/",
-        "type": "primary"
-      },
-      {
-        "title": "Britannica — open access",
-        "url": "https://www.britannica.com/topic/open-access",
-        "type": "reference"
-      }
-    ],
-    "confidence": "High-level draft"
+    "themes": ["Knowledge", "Community"],
+    "tags": ["wikipedia", "open-access", "education", "commons"],
+    "oneLine": "The belief that all human knowledge should be freely available to all humans.",
+    "whyItMatters": "Created Wikipedia, Creative Commons, open-access journals, and free educational resources. Democratized knowledge for billions of people.",
+    "related": ["aaron-swartz", "tim-berners-lee"]
   },
   {
-    "id": "decentralization",
-    "name": "Decentralization",
-    "aliases": [
-      "Distributed governance",
-      "Distributed systems logic"
-    ],
-    "entityType": "Idea",
-    "rarity": "Relic",
-    "themes": [
-      "Coordination",
-      "Freedom"
-    ],
-    "tags": [
-      "governance",
-      "networks",
-      "resilience",
-      "power"
-    ],
-    "oneLine": "The principle that authority, coordination, or infrastructure can be spread across many nodes instead of concentrated at one center.",
-    "whyItMatters": "Decentralization is a recurring strategic answer to censorship, single-point failure, empire-scale concentration, and brittle control systems.",
-    "context": "It appears in political theory, federal systems, internet architecture, open-source development, and contemporary debates over platforms, money, and institutional resilience.",
-    "contradictions": "Distributed systems can be more resilient and pluralistic, but they can also become slower, harder to govern, easier to fragment, or vulnerable to hidden concentration.",
-    "judgment": {
-      "Freedom contribution": "High",
-      "Coordination contribution": "Medium-High",
-      "Knowledge contribution": "Medium",
-      "Truth contribution": "Medium-Low",
-      "Long-term influence": "High",
-      "Moral complexity": "High",
-      "Harm / controversy": "Medium"
-    },
-    "related": [
-      "The Internet",
-      "Open Source",
-      "Freedom of Speech",
-      "Open Knowledge Movement",
-      "Taiwan"
-    ],
-    "sources": [
-      {
-        "title": "Britannica — decentralization",
-        "url": "https://www.britannica.com/topic/decentralization",
-        "type": "reference"
-      },
-      {
-        "title": "Internet Society — Internet way of networking",
-        "url": "https://www.internetsociety.org/issues/internet-way-of-networking/",
-        "type": "reference"
-      }
-    ],
-    "confidence": "High-level draft"
-  },
-  {
-    "id": "ai-infrastructure",
-    "name": "AI Infrastructure",
-    "aliases": [
-      "Artificial intelligence infrastructure",
-      "Compute stack"
-    ],
+    "id": "linux",
+    "name": "Linux",
     "entityType": "Technology",
-    "rarity": "Archive",
-    "themes": [
-      "Knowledge",
-      "Coordination"
-    ],
-    "tags": [
-      "ai",
-      "compute",
-      "chips",
-      "cloud",
-      "infrastructure"
-    ],
-    "oneLine": "The compute, data-center, chip, energy, and software stack required to train and deploy large-scale AI systems.",
-    "whyItMatters": "AI capability is increasingly downstream of infrastructure depth, making compute supply chains and energy systems central to power, innovation, and dependency.",
-    "context": "What looks like software competition is increasingly determined by semiconductors, cloud-scale capital expenditure, energy availability, data pipelines, and a small number of critical supply-chain chokepoints.",
-    "contradictions": "AI infrastructure can accelerate discovery and coordination while also concentrating power, increasing surveillance capacity, deepening energy demand, and entrenching platform dominance.",
-    "judgment": {
-      "Knowledge contribution": "High",
-      "Coordination contribution": "High",
-      "Freedom contribution": "Low-Medium",
-      "Truth contribution": "Low-Medium",
-      "Long-term influence": "Very High",
-      "Moral complexity": "Very High",
-      "Harm / controversy": "High"
-    },
-    "related": [
-      "Linux",
-      "Open Source",
-      "The Internet",
-      "Taiwan",
-      "Rare Earths",
-      "Semiconductor Manufacturing"
-    ],
-    "sources": [
-      {
-        "title": "OECD — AI compute and infrastructure policy context",
-        "url": "https://oecd.ai/en/wonk/ai-compute",
-        "type": "analysis"
-      },
-      {
-        "title": "Stanford HAI — AI Index",
-        "url": "https://aiindex.stanford.edu/",
-        "type": "reference"
-      }
-    ],
-    "confidence": "High-level draft"
+    "category": "Knowledge",
+    "rarity": "Relic",
+    "themes": ["Knowledge", "Innovation"],
+    "tags": ["open-source", "software", "infrastructure", "free"],
+    "oneLine": "The invisible backbone of the modern world — built by volunteers, free for everyone.",
+    "whyItMatters": "Runs 96% of web servers, all Android phones, most supercomputers, and the ISS. Proof that the most important infrastructure can be a gift, not a product.",
+    "related": ["linus-torvalds", "open-source"]
   },
   {
-    "id": "rare-earths",
-    "name": "Rare Earths",
-    "aliases": [
-      "Rare-earth elements",
-      "REEs"
-    ],
-    "entityType": "Resource",
-    "rarity": "Archive",
-    "themes": [
-      "Coordination",
-      "Knowledge"
-    ],
-    "tags": [
-      "minerals",
-      "supply chain",
-      "technology",
-      "industry"
-    ],
-    "oneLine": "A group of strategic minerals that sit deep inside modern electronics, magnets, defense systems, and energy transition hardware.",
-    "whyItMatters": "Rare earths are a classic leverage layer: mostly invisible to consumers, but critical to advanced manufacturing, military systems, and technology sovereignty.",
-    "context": "Their geopolitical importance comes less from raw scarcity alone than from mining, processing, refining, environmental burden, and supply-chain concentration across a few jurisdictions.",
-    "contradictions": "They enable clean-tech and advanced systems while bringing heavy ecological costs, dependency risks, and geopolitical chokepoint politics.",
-    "judgment": {
-      "Coordination contribution": "Medium",
-      "Knowledge contribution": "Medium",
-      "Freedom contribution": "Low",
-      "Truth contribution": "Low",
-      "Long-term influence": "High",
-      "Moral complexity": "High",
-      "Harm / controversy": "High"
-    },
-    "related": [
-      "AI Infrastructure",
-      "Taiwan",
-      "China",
-      "Semiconductor Manufacturing",
-      "The Internet"
-    ],
-    "sources": [
-      {
-        "title": "U.S. Geological Survey — Rare Earths Statistics and Information",
-        "url": "https://www.usgs.gov/centers/national-minerals-information-center/rare-earths-statistics-and-information",
-        "type": "data"
-      },
-      {
-        "title": "Britannica — rare-earth element",
-        "url": "https://www.britannica.com/science/rare-earth-element",
-        "type": "reference"
-      }
-    ],
-    "confidence": "High-level draft"
+    "id": "the-internet",
+    "name": "The Internet",
+    "entityType": "Technology",
+    "category": "Knowledge",
+    "rarity": "Mythic",
+    "themes": ["Knowledge", "Community"],
+    "tags": ["connection", "information", "global", "open"],
+    "oneLine": "Connected every human who has access to it — the largest shared creation in history.",
+    "whyItMatters": "Democratized information, enabled global movements, connected diaspora communities, and gave a voice to billions who had none. Its best use is still being invented.",
+    "related": ["tim-berners-lee", "open-source"]
   },
   {
-    "id": "taiwan",
-    "name": "Taiwan",
-    "aliases": [
-      "Republic of China",
-      "ROC"
-    ],
-    "entityType": "Country",
-    "rarity": "Legend",
-    "themes": [
-      "Coordination",
-      "Knowledge"
-    ],
-    "tags": [
-      "semiconductors",
-      "democracy",
-      "geopolitics",
-      "technology"
-    ],
-    "oneLine": "A strategically pivotal island democracy whose semiconductor depth and geopolitical position give it outsized global importance.",
-    "whyItMatters": "Taiwan bridges democracy, technology, maritime strategy, and industrial chokepoints more tightly than almost any other place in the contemporary world system.",
-    "context": "Taiwan sits at the intersection of East Asian security, contested sovereignty, advanced chip production, global trade routes, and democratic governance under continuous pressure from a much larger neighbor.",
-    "contradictions": "Its global economic importance generates deterrence and support, but that same importance also makes it a focal point of dependency, coercion risk, and strategic ambiguity.",
-    "judgment": {
-      "Knowledge contribution": "High",
-      "Coordination contribution": "High",
-      "Freedom contribution": "Medium-High",
-      "Truth contribution": "Medium",
-      "Long-term influence": "High",
-      "Moral complexity": "Very High",
-      "Harm / controversy": "High"
-    },
-    "related": [
-      "Semiconductor Manufacturing",
-      "AI Infrastructure",
-      "China",
-      "The Internet",
-      "Decentralization",
-      "United Nations"
-    ],
-    "sources": [
-      {
-        "title": "Britannica — Taiwan",
-        "url": "https://www.britannica.com/place/Taiwan",
-        "type": "reference"
-      },
-      {
-        "title": "Council on Foreign Relations — Why Taiwan Matters",
-        "url": "https://www.cfr.org/backgrounder/china-taiwan-relations-tension-us-policy-biden",
-        "type": "analysis"
-      }
-    ],
-    "confidence": "High-level draft"
+    "id": "reforestation",
+    "name": "Reforestation",
+    "entityType": "Movement",
+    "category": "Nature",
+    "rarity": "Relic",
+    "themes": ["Nature", "Healing"],
+    "tags": ["trees", "healing", "earth", "restoration"],
+    "oneLine": "Every tree planted is an act of faith in the future.",
+    "whyItMatters": "Global reforestation efforts have planted billions of trees, restoring ecosystems, absorbing carbon, and proving that humans can heal what they've broken.",
+    "related": ["wangari-maathai", "climate-activism"]
   }
 ]
