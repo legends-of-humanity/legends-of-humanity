@@ -63,6 +63,10 @@ button:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(201,168,76,.3
 /* GAME */
 .game-embed{padding:32px 24px;max-width:1000px;margin:0 auto;text-align:center}
 .game-embed h2{font-size:28px;color:#c9a84c}.game-embed p{color:#666;margin:8px 0 24px}
+.game-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;max-width:900px;margin:0 auto}
+.game-option{background:#12121a;border:1px solid #1a1a24;border-radius:10px;padding:20px;cursor:pointer;transition:all .25s;text-align:center}
+.game-option:hover{border-color:#c9a84c;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.game-option h3{font-size:18px;color:#e0ddd5;margin-bottom:6px}.game-option p{font-size:12px;color:#666;margin:0}
 .game-frame-wrap iframe{width:100%;height:80vh;border:1px solid #2a2a35;border-radius:10px;background:#0a0a0f}
 
 /* MODAL */

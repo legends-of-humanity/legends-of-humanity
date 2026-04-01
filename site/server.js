@@ -6,6 +6,8 @@ const http = require('http');
 const express = require('express');
 const { Server } = require('socket.io');
 
+const { createAIPlayer, aiChooseDeploy, aiChooseActions, aiThinkDelay } = require('../game/server/ai-player');
+
 const PORT = process.env.PORT || 3000;
 const app = express();
 const server = http.createServer(app);
@@ -154,6 +156,40 @@ io.on('connection', (socket) => {
     } catch(e) { socket.emit('error', { message: e.message }); }
   });
 
+  // --- PLAY VS AI ---
+  socket.on('play_ai', (payload = {}) => {
+    try {
+      const aiProfile = createAIPlayer(payload.difficulty || 'balanced');
+      const aiId = 'ai-' + Date.now().toString(36);
+      // Join lobby as AI
+      matchmaker.joinLobby(aiId, aiProfile.name);
+      matchmaker.joinLobby(socket.id, payload.name || 'Player');
+      // Force match
+      matchmaker.findMatch(socket.id); // adds to queue
+      const match = matchmaker.findMatch(aiId); // pairs them
+      if (!match) { socket.emit('error', { message: 'AI match failed' }); return; }
+      const { game, gameId } = match;
+      game._aiPlayerId = aiId;
+      game._aiStrategy = aiProfile.strategy;
+      game.players[aiId]._aiStrategy = aiProfile.strategy;
+      phaseState.set(gameId, { ready: new Set(), deploy: new Set(), actions: new Set(), aiId });
+      socket.join(gameId);
+      socket.emit('match_found', {
+        gameId, opponent: aiProfile.name + ' (' + aiProfile.description + ')',
+        yourHand: JSON.parse(JSON.stringify(game.players[socket.id].hand)),
+        isAI: true
+      });
+      // AI auto-ready
+      const state = phaseState.get(gameId);
+      state.ready.add(aiId);
+      state.ready.add(socket.id);
+      game.phase = 'deploy';
+      socket.emit('phase_change', { phase: 'deploy', gameState: broadcastState(game) });
+      // AI deploys after delay
+      setTimeout(() => aiTakeTurn(gameId, 'deploy'), aiThinkDelay());
+    } catch(e) { socket.emit('error', { message: e.message }); }
+  });
+
   socket.on('find_match', () => {
     try {
       const match = matchmaker.findMatch(socket.id);
@@ -198,6 +234,11 @@ io.on('connection', (socket) => {
         game.phase = 'action';
         state.deploy.clear();
         io.to(gid).emit('phase_change', { phase: 'action', gameState: broadcastState(game) });
+        // Trigger AI action phase
+        if (state.aiId) setTimeout(() => aiTakeTurn(gid, 'action'), aiThinkDelay());
+      } else if (state.aiId && !state.deploy.has(state.aiId)) {
+        // Trigger AI deploy
+        setTimeout(() => aiTakeTurn(gid, 'deploy'), aiThinkDelay());
       }
     } catch(e) { socket.emit('error', { message: e.message }); }
   });
@@ -220,6 +261,8 @@ io.on('connection', (socket) => {
           gameEngine.advanceTurn(game);
           state.actions.clear(); state.deploy.clear();
           io.to(gid).emit('phase_change', { phase: game.phase, gameState: broadcastState(game) });
+          // Trigger AI deploy for next turn
+          if (state.aiId) setTimeout(() => aiTakeTurn(gid, 'deploy'), aiThinkDelay());
         }
       }
     } catch(e) { socket.emit('error', { message: e.message }); }
@@ -242,6 +285,52 @@ function broadcastState(game) {
     players[pid] = { id: pid, name: (game.playerNames||{})[pid]||pid, handCount: p.hand.length, board: JSON.parse(JSON.stringify(p.board)), values: {...p.values} };
   });
   return { id: game.id, phase: game.phase, turn: game.turn, maxTurns: game.maxTurns, winner: game.winner, reason: game.reason, playersOrder: game.playersOrder, players, shared: {...game.shared}, log: game.log.slice(-20) };
+}
+
+// --- AI TURN LOGIC ---
+function aiTakeTurn(gameId, phase) {
+  try {
+    const game = matchmaker.getGame(gameId);
+    const state = phaseState.get(gameId);
+    if (!game || !state || !state.aiId) return;
+    const aiId = state.aiId;
+
+    if (phase === 'deploy') {
+      const cardIds = aiChooseDeploy(game, aiId);
+      if (cardIds.length > 0) {
+        gameEngine.deployCards(game, aiId, cardIds);
+        game.log.push(`AI deployed ${cardIds.length} card(s).`);
+      }
+      state.deploy.add(aiId);
+      // Check if both deployed
+      if (state.deploy.size >= 2) {
+        game.phase = 'action';
+        state.deploy.clear();
+        io.to(gameId).emit('phase_change', { phase: 'action', gameState: broadcastState(game) });
+        setTimeout(() => aiTakeTurn(gameId, 'action'), aiThinkDelay());
+      }
+    } else if (phase === 'action') {
+      const actions = aiChooseActions(game, aiId);
+      if (actions.length > 0) {
+        gameEngine.executeActions(game, aiId, actions);
+      }
+      state.actions.add(aiId);
+      // Check if both acted
+      if (state.actions.size >= 2) {
+        gameEngine.resolvePhase(game);
+        const victory = gameEngine.checkVictory(game);
+        io.to(gameId).emit('turn_result', { changes: {}, log: game.log.slice(), gameState: broadcastState(game) });
+        if (victory.finished) {
+          io.to(gameId).emit('game_over', { winner: victory.winnerId, reason: victory.reason, finalState: broadcastState(game) });
+        } else {
+          gameEngine.advanceTurn(game);
+          state.actions.clear(); state.deploy.clear();
+          io.to(gameId).emit('phase_change', { phase: game.phase, gameState: broadcastState(game) });
+          setTimeout(() => aiTakeTurn(gameId, 'deploy'), aiThinkDelay());
+        }
+      }
+    }
+  } catch(e) { console.error('AI turn error:', e.message); }
 }
 
 server.listen(PORT, () => {

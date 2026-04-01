@@ -87,14 +87,34 @@
       <div id="proposals-list"></div>
     </div>
 
-    <!-- GAME (iframe to game/) -->
+    <!-- GAME -->
     <div id="page-game" class="page" style="display:none">
       <div class="game-embed">
         <h2>🎮 Play ERD</h2>
-        <p>Open two tabs to play against yourself, or share the link with a friend!</p>
+        <p>Battle against AI or challenge a friend!</p>
+        <div class="game-options">
+          <div class="game-option" onclick="launchGameAI('aggressive')">
+            <h3>⚔️ vs Aggressive AI</h3>
+            <p>Seeks Force Victory through raw power</p>
+          </div>
+          <div class="game-option" onclick="launchGameAI('diplomatic')">
+            <h3>🕊️ vs Diplomatic AI</h3>
+            <p>Seeks Harmony through peace and cooperation</p>
+          </div>
+          <div class="game-option" onclick="launchGameAI('balanced')">
+            <h3>🧠 vs Balanced AI</h3>
+            <p>Adapts strategy based on game state</p>
+          </div>
+          <div class="game-option" onclick="launchGameAI('chaotic')">
+            <h3>🎲 vs Chaotic AI</h3>
+            <p>Unpredictable wildcard — expect anything</p>
+          </div>
+        </div>
+        <div style="margin-top:24px">
+          <button class="btn-outline" onclick="launchGame()">👥 Play vs Human (2 tabs)</button>
+        </div>
         <div class="game-frame-wrap">
           <iframe id="game-frame" src="/game/" style="display:none"></iframe>
-          <button onclick="launchGame()">Launch Game →</button>
         </div>
       </div>
     </div>

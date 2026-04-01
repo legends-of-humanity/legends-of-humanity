@@ -176,7 +176,12 @@ function launchGame() {
   const frame = document.getElementById('game-frame');
   frame.style.display = 'block';
   frame.src = '/game/';
-  frame.parentElement.querySelector('button').style.display = 'none';
+}
+
+function launchGameAI(difficulty) {
+  const frame = document.getElementById('game-frame');
+  frame.style.display = 'block';
+  frame.src = '/game/?ai=' + difficulty;
 }
 
 // --- INIT ---
