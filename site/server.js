@@ -167,6 +167,45 @@ app.post('/api/proposals/:id/vote', (req, res) => {
   res.json(p);
 });
 
+// Leaderboard data
+const LEADERBOARD_FILE = path.join(DATA_DIR, 'leaderboard.json');
+function loadLeaderboard() {
+  try { return JSON.parse(fs.readFileSync(LEADERBOARD_FILE, 'utf8')); }
+  catch(e) { return { players: {}, matches: [] }; }
+}
+function saveLeaderboard(lb) {
+  fs.writeFileSync(LEADERBOARD_FILE, JSON.stringify(lb, null, 2), 'utf8');
+}
+function recordMatch(winner, loser, reason, turns) {
+  const lb = loadLeaderboard();
+  // Init players
+  [winner, loser].forEach(name => {
+    if (!lb.players[name]) lb.players[name] = { name, elo: 1000, wins: 0, losses: 0, favVictory: null, victoryTypes: {} };
+  });
+  // Update stats
+  lb.players[winner].wins++;
+  lb.players[loser].losses++;
+  lb.players[winner].victoryTypes[reason] = (lb.players[winner].victoryTypes[reason] || 0) + 1;
+  // ELO calculation
+  const K = 32;
+  const eloW = lb.players[winner].elo;
+  const eloL = lb.players[loser].elo;
+  const expected = 1 / (1 + Math.pow(10, (eloL - eloW) / 400));
+  lb.players[winner].elo = Math.round(eloW + K * (1 - expected));
+  lb.players[loser].elo = Math.round(eloL + K * (0 - (1 - expected)));
+  // Fav victory
+  const vt = lb.players[winner].victoryTypes;
+  lb.players[winner].favVictory = Object.entries(vt).sort((a,b) => b[1] - a[1])[0]?.[0] || reason;
+  // Record match
+  lb.matches.unshift({ player1: winner, player2: loser, winner, reason, turns, timestamp: Date.now() });
+  if (lb.matches.length > 100) lb.matches = lb.matches.slice(0, 100);
+  saveLeaderboard(lb);
+}
+
+app.get('/api/leaderboard', (req, res) => {
+  res.json(loadLeaderboard());
+});
+
 // Stats
 app.get('/api/stats', (req, res) => {
   const entities = getAllEntities();
@@ -291,6 +330,13 @@ io.on('connection', (socket) => {
         io.to(gid).emit('turn_result', { changes: {}, log: game.log.slice(), gameState: broadcastState(game) });
         if (victory.finished) {
           io.to(gid).emit('game_over', { winner: victory.winnerId, reason: victory.reason, finalState: broadcastState(game) });
+          // Record match for leaderboard
+          try {
+            const winnerName = (game.playerNames || {})[victory.winnerId] || victory.winnerId;
+            const loserId = game.playersOrder.find(id => id !== victory.winnerId);
+            const loserName = (game.playerNames || {})[loserId] || loserId;
+            recordMatch(winnerName, loserName, victory.reason, game.turn);
+          } catch(e) { console.error('Leaderboard record error:', e.message); }
         } else {
           gameEngine.advanceTurn(game);
           state.actions.clear(); state.deploy.clear();
@@ -356,6 +402,12 @@ function aiTakeTurn(gameId, phase) {
         io.to(gameId).emit('turn_result', { changes: {}, log: game.log.slice(), gameState: broadcastState(game) });
         if (victory.finished) {
           io.to(gameId).emit('game_over', { winner: victory.winnerId, reason: victory.reason, finalState: broadcastState(game) });
+          try {
+            const winnerName = (game.playerNames || {})[victory.winnerId] || victory.winnerId;
+            const loserId = game.playersOrder.find(id => id !== victory.winnerId);
+            const loserName = (game.playerNames || {})[loserId] || loserId;
+            recordMatch(winnerName, loserName, victory.reason, game.turn);
+          } catch(e) { console.error('AI leaderboard error:', e.message); }
         } else {
           gameEngine.advanceTurn(game);
           state.actions.clear(); state.deploy.clear();

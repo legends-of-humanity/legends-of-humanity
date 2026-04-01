@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERD Leaderboard</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',system-ui,sans-serif;background:#08080d;color:#d4d0c8;min-height:100vh}
+    .container{max-width:700px;margin:0 auto;padding:16px}
+
+    header{text-align:center;padding:24px 0;border-bottom:1px solid #1a1a24;margin-bottom:24px}
+    header h1{font-size:28px;color:#c9a84c;letter-spacing:2px}
+    header p{color:#666;font-size:14px;margin-top:4px}
+
+    .tabs{display:flex;gap:4px;margin-bottom:20px;background:#0c0c14;border-radius:10px;padding:4px}
+    .tab{flex:1;padding:10px;text-align:center;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;color:#888;transition:all .2s}
+    .tab.active{background:linear-gradient(135deg,#c9a84c,#a88a3a);color:#0a0a0f}
+    .tab:hover:not(.active){color:#c9a84c}
+
+    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px}
+    .stat-box{background:#12121a;border-radius:10px;padding:16px;text-align:center}
+    .stat-box .val{font-size:28px;font-weight:800;color:#c9a84c}
+    .stat-box .label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+    table{width:100%;border-collapse:collapse}
+    th{text-align:left;padding:10px 12px;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid #1a1a24}
+    td{padding:12px;border-bottom:1px solid #0e0e16;font-size:14px}
+    tr:hover{background:#0e0e16}
+    .rank{font-weight:800;color:#c9a84c;width:40px}
+    .rank-1{color:#c9a84c;font-size:18px}.rank-2{color:#aaa}.rank-3{color:#cd7f32}
+    .player-name{font-weight:600}
+    .win{color:#51cf66}.loss{color:#ff6b6b}.draw{color:#888}
+    .elo{font-weight:700;color:#c9a84c}
+    .victory-type{font-size:11px;padding:3px 8px;border-radius:10px;font-weight:600}
+    .vt-force{background:rgba(255,107,107,.15);color:#ff6b6b}
+    .vt-influence{background:rgba(77,171,247,.15);color:#4dabf7}
+    .vt-innovation{background:rgba(175,111,255,.15);color:#af6fff}
+    .vt-harmony{background:rgba(81,207,102,.15);color:#51cf66}
+    .vt-turn_limit{background:rgba(136,136,136,.15);color:#888}
+
+    .recent-match{background:#12121a;border-radius:10px;padding:14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+    .match-players{display:flex;align-items:center;gap:8px;font-size:14px}
+    .match-vs{color:#444;font-size:12px}
+    .match-result{font-size:12px;font-weight:600}
+    .match-time{font-size:11px;color:#555}
+
+    .empty{text-align:center;color:#444;padding:40px;font-size:14px}
+    a.back{display:block;text-align:center;color:#888;margin-top:24px;font-size:13px;text-decoration:none}
+    a.back:hover{color:#c9a84c}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🏆 Leaderboard</h1>
+      <p>ERD: Legends of Humanity — Global Rankings</p>
+    </header>
+
+    <div class="stats-row">
+      <div class="stat-box"><div class="val" id="total-matches">0</div><div class="label">Matches Played</div></div>
+      <div class="stat-box"><div class="val" id="total-players">0</div><div class="label">Players</div></div>
+      <div class="stat-box"><div class="val" id="most-common-victory">—</div><div class="label">Most Common Victory</div></div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" onclick="showTab('rankings')">🏆 Rankings</div>
+      <div class="tab" onclick="showTab('recent')">⚡ Recent Matches</div>
+      <div class="tab" onclick="showTab('victories')">📊 Victory Stats</div>
+    </div>
+
+    <div id="tab-rankings">
+      <table>
+        <thead><tr><th>#</th><th>Player</th><th>ELO</th><th>W</th><th>L</th><th>Win Rate</th><th>Fav Victory</th></tr></thead>
+        <tbody id="rankings-body"></tbody>
+      </table>
+    </div>
+
+    <div id="tab-recent" style="display:none">
+      <div id="recent-matches"></div>
+    </div>
+
+    <div id="tab-victories" style="display:none">
+      <div id="victory-stats"></div>
+    </div>
+
+    <a href="/" class="back">← Back to Home</a>
+  </div>
+
+  <script>
+    let data = { players: {}, matches: [] };
+
+    async function loadData() {
+      try {
+        const res = await fetch('/api/leaderboard');
+        data = await res.json();
+      } catch(e) {
+        // Generate sample data for demo
+        data = generateSampleData();
+      }
+      render();
+    }
+
+    function generateSampleData() {
+      const aiNames = ['Atlas AI', 'Deep Oracle', 'Sage Protocol', 'Echo Mind', 'Cipher Engine', 'Nova Think', 'Prism Logic', 'Peace Engine'];
+      const victories = ['force', 'influence', 'innovation', 'harmony', 'turn_limit'];
+      const players = {};
+      const matches = [];
+
+      // Generate AI players with stats
+      aiNames.forEach((name, i) => {
+        const wins = Math.floor(Math.random() * 20) + 5;
+        const losses = Math.floor(Math.random() * 15) + 2;
+        const favVictory = victories[Math.floor(Math.random() * victories.length)];
+        players[name] = {
+          name,
+          elo: 1000 + (wins - losses) * 25 + Math.floor(Math.random() * 100),
+          wins,
+          losses,
+          favVictory,
+          victoryTypes: {}
+        };
+        victories.forEach(v => {
+          players[name].victoryTypes[v] = Math.floor(Math.random() * wins / 2);
+        });
+        players[name].victoryTypes[favVictory] = Math.max(players[name].victoryTypes[favVictory], Math.floor(wins * 0.4));
+      });
+
+      // Generate recent matches
+      for (let i = 0; i < 15; i++) {
+        const p1 = aiNames[Math.floor(Math.random() * aiNames.length)];
+        let p2 = p1;
+        while (p2 === p1) p2 = aiNames[Math.floor(Math.random() * aiNames.length)];
+        matches.push({
+          player1: p1,
+          player2: p2,
+          winner: Math.random() > 0.5 ? p1 : p2,
+          reason: victories[Math.floor(Math.random() * victories.length)],
+          timestamp: Date.now() - Math.floor(Math.random() * 86400000),
+          turns: Math.floor(Math.random() * 4) + 3
+        });
+      }
+
+      return { players, matches: matches.sort((a,b) => b.timestamp - a.timestamp) };
+    }
+
+    function render() {
+      renderStats();
+      renderRankings();
+      renderRecent();
+      renderVictoryStats();
+    }
+
+    function renderStats() {
+      const players = Object.values(data.players);
+      document.getElementById('total-matches').textContent = data.matches.length;
+      document.getElementById('total-players').textContent = players.length;
+
+      // Most common victory
+      const vCounts = {};
+      data.matches.forEach(m => { vCounts[m.reason] = (vCounts[m.reason] || 0) + 1; });
+      const top = Object.entries(vCounts).sort((a,b) => b[1] - a[1])[0];
+      const vLabels = { force: '⚔️ Force', influence: '⚖️ Influence', innovation: '💡 Innovation', harmony: '🕊️ Harmony', turn_limit: '⏰ Limit' };
+      document.getElementById('most-common-victory').textContent = top ? (vLabels[top[0]] || top[0]) : '—';
+    }
+
+    function renderRankings() {
+      const sorted = Object.values(data.players).sort((a,b) => b.elo - a.elo);
+      const tbody = document.getElementById('rankings-body');
+      if (sorted.length === 0) { tbody.innerHTML = '<tr><td colspan="7" class="empty">No games played yet. Be the first!</td></tr>'; return; }
+      
+      tbody.innerHTML = sorted.map((p, i) => {
+        const total = p.wins + p.losses;
+        const winRate = total > 0 ? Math.round(p.wins / total * 100) : 0;
+        const rankClass = i < 3 ? ` rank-${i+1}` : '';
+        const medals = ['🥇','🥈','🥉'];
+        const vLabels = { force: 'Force', influence: 'Influence', innovation: 'Innovation', harmony: 'Harmony', turn_limit: 'Limit' };
+        return `<tr>
+          <td class="rank${rankClass}">${i < 3 ? medals[i] : i+1}</td>
+          <td class="player-name">${p.name}</td>
+          <td class="elo">${p.elo}</td>
+          <td class="win">${p.wins}</td>
+          <td class="loss">${p.losses}</td>
+          <td>${winRate}%</td>
+          <td><span class="victory-type vt-${p.favVictory}">${vLabels[p.favVictory] || p.favVictory}</span></td>
+        </tr>`;
+      }).join('');
+    }
+
+    function renderRecent() {
+      const el = document.getElementById('recent-matches');
+      if (data.matches.length === 0) { el.innerHTML = '<div class="empty">No matches yet</div>'; return; }
+      
+      el.innerHTML = data.matches.slice(0, 20).map(m => {
+        const time = new Date(m.timestamp).toLocaleString();
+        const vLabels = { force: '⚔️', influence: '⚖️', innovation: '💡', harmony: '🕊️', turn_limit: '⏰' };
+        return `<div class="recent-match">
+          <div class="match-players">
+            <span style="color:${m.winner === m.player1 ? '#51cf66' : '#ff6b6b'}">${m.player1}</span>
+            <span class="match-vs">vs</span>
+            <span style="color:${m.winner === m.player2 ? '#51cf66' : '#ff6b6b'}">${m.player2}</span>
+          </div>
+          <div>
+            <div class="match-result">${vLabels[m.reason] || '?'} ${m.reason} · ${m.turns} turns</div>
+            <div class="match-time">${time}</div>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    function renderVictoryStats() {
+      const el = document.getElementById('victory-stats');
+      const vCounts = {};
+      data.matches.forEach(m => { vCounts[m.reason] = (vCounts[m.reason] || 0) + 1; });
+      const total = data.matches.length || 1;
+      
+      const types = [
+        { key: 'force', label: '⚔️ Force Victory', color: '#ff6b6b', desc: 'Won through raw power domination' },
+        { key: 'influence', label: '⚖️ Influence Victory', color: '#4dabf7', desc: 'Won through legitimacy and soft power' },
+        { key: 'innovation', label: '💡 Innovation Victory', color: '#af6fff', desc: 'Won through technology and knowledge' },
+        { key: 'harmony', label: '🕊️ Harmony Victory', color: '#51cf66', desc: 'Won through peace, trust, and dignity' },
+        { key: 'turn_limit', label: '⏰ Turn Limit', color: '#888', desc: 'Highest combined score after 6 turns' },
+      ];
+
+      el.innerHTML = types.map(t => {
+        const count = vCounts[t.key] || 0;
+        const pct = Math.round(count / total * 100);
+        return `<div style="margin-bottom:16px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-size:15px;font-weight:600">${t.label}</span>
+            <span style="color:${t.color};font-weight:700">${count} (${pct}%)</span>
+          </div>
+          <div style="height:8px;background:#1a1a24;border-radius:4px;overflow:hidden">
+            <div style="height:100%;width:${pct}%;background:${t.color};border-radius:4px;transition:width .5s"></div>
+          </div>
+          <div style="font-size:11px;color:#555;margin-top:4px">${t.desc}</div>
+        </div>`;
+      }).join('');
+    }
+
+    function showTab(tab) {
+      ['rankings','recent','victories'].forEach(t => {
+        document.getElementById('tab-' + t).style.display = t === tab ? 'block' : 'none';
+      });
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
