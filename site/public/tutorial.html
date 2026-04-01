@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERD Tutorial — Learn to Play</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',system-ui,sans-serif;background:#08080d;color:#d4d0c8;min-height:100vh;overflow-x:hidden}
+    .slide{display:none;min-height:100vh;padding:40px 24px;max-width:700px;margin:0 auto;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    .slide.active{display:flex}
+    .slide h1{font-size:42px;color:#c9a84c;margin-bottom:8px;letter-spacing:2px}
+    .slide h2{font-size:28px;color:#c9a84c;margin-bottom:12px}
+    .slide p{color:#888;font-size:16px;line-height:1.8;max-width:500px;margin:0 auto 24px}
+    .slide .big-emoji{font-size:80px;margin:24px 0}
+    .slide .card-preview{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+    .mini{background:#12121a;border:2px solid #2a2a35;border-radius:10px;padding:12px;width:120px;text-align:center}
+    .mini .emoji{font-size:32px}.mini .name{font-size:11px;font-weight:700;margin-top:4px}.mini .type{font-size:9px;color:#888}
+    .mini.rarity-Legend{border-color:#c9a84c}.mini.rarity-Mythic{border-color:#8d57ff}.mini.rarity-Relic{border-color:#59a9ff}
+
+    .resource-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+    .res-item{background:#12121a;border-radius:10px;padding:12px 16px;text-align:center;min-width:80px}
+    .res-item .emoji{font-size:28px}.res-item .name{font-size:11px;color:#888;margin-top:4px}
+
+    .victory-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0;max-width:500px;text-align:left}
+    .victory-card{background:#12121a;border-radius:10px;padding:16px;border-left:3px solid #c9a84c}
+    .victory-card h3{font-size:14px;margin-bottom:4px}.victory-card p{font-size:12px;color:#888;margin:0}
+    .victory-card.force{border-color:#ff6b6b}.victory-card.force h3{color:#ff6b6b}
+    .victory-card.influence{border-color:#4dabf7}.victory-card.influence h3{color:#4dabf7}
+    .victory-card.innovation{border-color:#af6fff}.victory-card.innovation h3{color:#af6fff}
+    .victory-card.harmony{border-color:#51cf66}.victory-card.harmony h3{color:#51cf66}
+
+    .nav-dots{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
+    .dot{width:10px;height:10px;border-radius:50%;background:#2a2a35;cursor:pointer;transition:all .3s}
+    .dot.active{background:#c9a84c;transform:scale(1.3)}
+
+    .btn{padding:14px 32px;background:linear-gradient(135deg,#c9a84c,#a88a3a);color:#0a0a0f;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;margin:8px}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(201,168,76,.3)}
+    .btn-outline{background:transparent;border:2px solid #3a3a45;color:#888}
+    .btn-outline:hover{border-color:#c9a84c;color:#c9a84c}
+
+    .philosophy{background:#12121a;border-radius:12px;padding:24px;margin:20px 0;max-width:500px;border-left:3px solid #c9a84c}
+    .philosophy p{text-align:left;font-size:14px;color:#aaa;margin:8px 0}
+    .philosophy strong{color:#c9a84c}
+
+    .step-num{font-size:64px;font-weight:800;color:#c9a84c;opacity:.3;margin-bottom:-20px}
+    @media(max-width:640px){.slide h1{font-size:28px}.slide h2{font-size:22px}.victory-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: INTRO -->
+  <div class="slide active" id="slide-0">
+    <h1>ERD</h1>
+    <p class="big-emoji">🌍</p>
+    <h2>Legends of Humanity</h2>
+    <p>A card game where you play with real history, real power, and real consequences.</p>
+    <p>Every card is a real person, idea, movement, or resource that shaped our world.</p>
+    <button class="btn" onclick="nextSlide()">Learn to Play →</button>
+  </div>
+
+  <!-- SLIDE 2: CARDS -->
+  <div class="slide" id="slide-1">
+    <div class="step-num">1</div>
+    <h2>Your Cards Are Real</h2>
+    <p>Every card represents something real. Tap any card to learn the true story behind it — with real sources.</p>
+    <div class="card-preview">
+      <div class="mini rarity-Legend"><div class="emoji">🙏</div><div class="name">Gandhi</div><div class="type">Person · Legend</div></div>
+      <div class="mini rarity-Mythic"><div class="emoji">🌐</div><div class="name">The Internet</div><div class="type">Technology · Mythic</div></div>
+      <div class="mini rarity-Relic"><div class="emoji">🛢️</div><div class="name">Oil</div><div class="type">Resource · Relic</div></div>
+      <div class="mini rarity-Legend"><div class="emoji">✊</div><div class="name">Mandela</div><div class="type">Person · Legend</div></div>
+    </div>
+    <p>8 card types: Person, Idea, Movement, Technology, Organization, Country, Resource, Event</p>
+    <button class="btn" onclick="nextSlide()">Next →</button>
+  </div>
+
+  <!-- SLIDE 3: RESOURCES -->
+  <div class="slide" id="slide-2">
+    <div class="step-num">2</div>
+    <h2>7 Resources</h2>
+    <p>Everything costs resources. Deploy cards, take actions — spend wisely.</p>
+    <div class="resource-row">
+      <div class="res-item"><div class="emoji">💰</div><div class="name">Money</div></div>
+      <div class="res-item"><div class="emoji">📊</div><div class="name">Data</div></div>
+      <div class="res-item"><div class="emoji">🤖</div><div class="name">AI</div></div>
+      <div class="res-item"><div class="emoji">🛢️</div><div class="name">Oil</div></div>
+      <div class="res-item"><div class="emoji">🌲</div><div class="name">Forest</div></div>
+      <div class="res-item"><div class="emoji">👷</div><div class="name">Labor</div></div>
+      <div class="res-item"><div class="emoji">📢</div><div class="name">Influence</div></div>
+    </div>
+    <p>Your deployed cards generate resources each turn. Countries give Money + Labor. Technology gives Data + AI.</p>
+    <button class="btn" onclick="nextSlide()">Next →</button>
+  </div>
+
+  <!-- SLIDE 4: TURNS -->
+  <div class="slide" id="slide-3">
+    <div class="step-num">3</div>
+    <h2>Each Turn</h2>
+    <p>The game lasts 6 turns. Each turn has 2 phases:</p>
+    <div class="philosophy">
+      <p><strong>1. Deploy</strong> — Play 0-2 cards from your hand onto the board. Each costs resources.</p>
+      <p><strong>2. Action</strong> — Each deployed card can perform one action: Build, Reveal, Pressure, Reconcile, and more.</p>
+    </div>
+    <p>Actions change 3 values: <span style="color:#ff6b6b">Power</span>, <span style="color:#4dabf7">Legitimacy</span>, <span style="color:#51cf66">Harmony</span>. Plus shared <span style="color:#ff6b6b">Instability</span>.</p>
+    <button class="btn" onclick="nextSlide()">Next →</button>
+  </div>
+
+  <!-- SLIDE 5: VICTORY -->
+  <div class="slide" id="slide-4">
+    <div class="step-num">4</div>
+    <h2>4 Ways to Win</h2>
+    <div class="victory-grid">
+      <div class="victory-card force"><h3>⚔️ Force Victory</h3><p>Power ≥ 10. Raw domination. Fast but costly.</p></div>
+      <div class="victory-card influence"><h3>⚖️ Influence Victory</h3><p>Legitimacy ≥ 10 + Power ≥ 5. Soft power wins.</p></div>
+      <div class="victory-card innovation"><h3>💡 Innovation Victory</h3><p>3+ Tech cards + Power ≥ 7. Technology prevails.</p></div>
+      <div class="victory-card harmony"><h3>🕊️ Harmony Victory</h3><p>Harmony ≥ 8 + Low Instability + Legitimacy ≥ 5. Hardest but strongest.</p></div>
+    </div>
+    <button class="btn" onclick="nextSlide()">Next →</button>
+  </div>
+
+  <!-- SLIDE 6: PHILOSOPHY -->
+  <div class="slide" id="slide-5">
+    <div class="step-num">5</div>
+    <h2>The Real Game</h2>
+    <div class="philosophy">
+      <p><strong>Domination works</strong> — but it costs instability, legitimacy, and world health.</p>
+      <p><strong>Peace is harder</strong> — but it builds something that lasts.</p>
+      <p><strong>Every card is sourced</strong> — tap any card to learn the real story.</p>
+      <p><strong>This is open source</strong> — you can propose new cards, vote on changes, and help build the atlas.</p>
+    </div>
+    <p>The most beautiful victory is building a world actually worth inheriting.</p>
+    <button class="btn" onclick="window.location.href='/'">🎮 Play Now</button>
+    <button class="btn-outline btn" onclick="window.location.href='/'">← Back to Home</button>
+  </div>
+
+  <!-- NAV DOTS -->
+  <div class="nav-dots" id="dots"></div>
+
+  <script>
+    const totalSlides = 6;
+    let current = 0;
+    const dots = document.getElementById('dots');
+    for(let i=0;i<totalSlides;i++){
+      const d=document.createElement('div');
+      d.className='dot'+(i===0?' active':'');
+      d.onclick=()=>goToSlide(i);
+      dots.appendChild(d);
+    }
+    function goToSlide(n){
+      document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
+      document.querySelectorAll('.dot').forEach(d=>d.classList.remove('active'));
+      document.getElementById('slide-'+n).classList.add('active');
+      dots.children[n].classList.add('active');
+      current=n;
+    }
+    function nextSlide(){goToSlide(Math.min(current+1,totalSlides-1))}
+    document.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight'||e.key===' ')nextSlide();
+      if(e.key==='ArrowLeft')goToSlide(Math.max(current-1,0));
+    });
+    // Swipe support
+    let touchStart=0;
+    document.addEventListener('touchstart',e=>touchStart=e.touches[0].clientX);
+    document.addEventListener('touchend',e=>{
+      const diff=e.changedTouches[0].clientX-touchStart;
+      if(diff<-50)nextSlide();
+      if(diff>50)goToSlide(Math.max(current-1,0));
+    });
+  </script>
+</body>
+</html>
