@@ -34,11 +34,17 @@ function saveJSON(filename, data) {
 // Load entities
 function getAllEntities() {
   const core = loadJSON('entities.json');
-  const worldRaw = loadJSON('world_strategy_entities.json');
-  const world = Array.isArray(worldRaw) ? worldRaw : (worldRaw.entities || []);
-  let power = [];
-  try { power = loadJSON('power_structures.json'); } catch(e) {}
-  return [...core, ...world, ...power];
+  // Load any additional entity files that exist
+  let extras = [];
+  const extraFiles = ['power_structures.json', 'world_strategy_entities.json'];
+  for (const f of extraFiles) {
+    try {
+      const raw = loadJSON(f);
+      const arr = Array.isArray(raw) ? raw : (raw.entities || []);
+      extras = extras.concat(arr);
+    } catch(e) { /* file doesn't exist, that's ok */ }
+  }
+  return [...core, ...extras];
 }
 
 // Votes storage (simple JSON file)
