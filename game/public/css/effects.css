@@ -1,0 +1,217 @@
+/* ========================================
+   ERD BATTLE EFFECTS
+   Visual effects for card actions
+   ======================================== */
+
+/* EFFECT OVERLAY */
+.effect-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none; z-index: 90; overflow: hidden;
+}
+
+/* === LIGHTNING (Disrupt, Pressure) === */
+@keyframes lightning-flash {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  20% { opacity: 0; }
+  30% { opacity: 0.8; }
+  40% { opacity: 0; }
+  50% { opacity: 1; }
+  60% { opacity: 0; }
+  100% { opacity: 0; }
+}
+.effect-lightning {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(100,150,255,0.4), transparent 70%);
+  animation: lightning-flash 0.8s ease-out;
+}
+.effect-lightning::after {
+  content: '⚡'; position: absolute; top: 20%; left: 50%;
+  transform: translate(-50%, -50%); font-size: 120px;
+  animation: lightning-flash 0.6s ease-out;
+}
+
+/* === OIL SPLASH (Extract, Mobilize) === */
+@keyframes oil-drip {
+  0% { transform: translateY(-100%); opacity: 0; }
+  20% { opacity: 0.8; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+.effect-oil {
+  position: absolute; top: 0; left: 0; right: 0; height: 100%;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(30,10,0,0.6) 30%,
+    rgba(60,20,0,0.4) 60%,
+    transparent 100%
+  );
+  animation: oil-drip 1.5s ease-in;
+}
+.effect-oil::before {
+  content: '🛢️'; position: absolute; top: 30%; left: 50%;
+  transform: translate(-50%, -50%); font-size: 80px;
+  animation: oil-drip 1.2s ease-in;
+}
+
+/* === FIRE (Mobilize, Extract when high instability) === */
+@keyframes fire-rise {
+  0% { transform: translateY(100%); opacity: 0; }
+  30% { opacity: 0.7; }
+  100% { transform: translateY(-20%); opacity: 0; }
+}
+.effect-fire {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+  background: linear-gradient(0deg,
+    rgba(255,80,0,0.5) 0%,
+    rgba(255,150,0,0.3) 40%,
+    transparent 100%
+  );
+  animation: fire-rise 1.2s ease-out;
+}
+.effect-fire::after {
+  content: '🔥'; position: absolute; bottom: 20%; left: 50%;
+  transform: translateX(-50%); font-size: 100px;
+  animation: fire-rise 1s ease-out;
+}
+
+/* === GROWTH (Build, Protect, Stabilize) === */
+@keyframes grow-pulse {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.effect-growth {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(80,200,120,0.4), transparent 70%);
+  animation: grow-pulse 1.2s ease-out;
+}
+.effect-growth::after {
+  content: '🌲'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); font-size: 80px;
+  animation: grow-pulse 1s ease-out;
+}
+
+/* === HARMONY WAVE (Reconcile, Coordinate) === */
+@keyframes harmony-wave {
+  0% { transform: scale(0); opacity: 0.8; }
+  100% { transform: scale(3); opacity: 0; }
+}
+.effect-harmony {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px; height: 200px; border-radius: 50%;
+  border: 3px solid rgba(80,200,120,0.6);
+  animation: harmony-wave 1.5s ease-out;
+}
+.effect-harmony::before {
+  content: ''; position: absolute; top: -20px; left: -20px; right: -20px; bottom: -20px;
+  border-radius: 50%; border: 2px solid rgba(100,180,255,0.4);
+  animation: harmony-wave 1.5s ease-out 0.2s;
+}
+.effect-harmony::after {
+  content: '🕊️'; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); font-size: 60px;
+}
+
+/* === REVEAL LIGHT (Reveal) === */
+@keyframes reveal-beam {
+  0% { clip-path: polygon(48% 0%, 52% 0%, 52% 0%, 48% 0%); opacity: 1; }
+  50% { clip-path: polygon(30% 0%, 70% 0%, 90% 100%, 10% 100%); opacity: 0.8; }
+  100% { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); opacity: 0; }
+}
+.effect-reveal {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(255,255,200,0.5), transparent);
+  animation: reveal-beam 1s ease-out;
+}
+.effect-reveal::after {
+  content: '👁️'; position: absolute; top: 30%; left: 50%;
+  transform: translate(-50%, -50%); font-size: 80px;
+  opacity: 0; animation: lightning-flash 0.8s ease-out;
+}
+
+/* === PRESSURE (Pressure) === */
+@keyframes pressure-crush {
+  0% { transform: scaleY(1); }
+  50% { transform: scaleY(0.85); }
+  100% { transform: scaleY(1); }
+}
+.effect-pressure {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,50,50,0.3), transparent 60%);
+  animation: pressure-crush 0.8s ease-in-out;
+}
+
+/* === INVEST GLOW (Invest) === */
+@keyframes invest-sparkle {
+  0% { opacity: 0; transform: translateY(20px) scale(0.8); }
+  50% { opacity: 1; transform: translateY(-10px) scale(1.1); }
+  100% { opacity: 0; transform: translateY(-40px) scale(0.9); }
+}
+.effect-invest {
+  position: absolute; top: 40%; left: 50%;
+  transform: translate(-50%, -50%); font-size: 60px;
+  animation: invest-sparkle 1s ease-out;
+}
+.effect-invest::after { content: '💰'; }
+
+/* === DATA STREAM (Research, Reveal + tech) === */
+@keyframes data-stream {
+  0% { background-position: 0% 0%; opacity: 0; }
+  20% { opacity: 0.5; }
+  100% { background-position: 0% 300%; opacity: 0; }
+}
+.effect-data {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg,
+    transparent 0px, transparent 20px,
+    rgba(0,150,255,0.1) 20px, rgba(0,150,255,0.1) 21px
+  );
+  background-size: 100% 100px;
+  animation: data-stream 1.5s linear;
+}
+
+/* === SCORE FLOAT (when values change) === */
+@keyframes score-float {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-60px); }
+}
+.score-float {
+  position: absolute; font-size: 24px; font-weight: 800;
+  pointer-events: none; animation: score-float 1.2s ease-out forwards;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.score-float.positive { color: #51cf66; }
+.score-float.negative { color: #ff6b6b; }
+
+/* === CARD PLAY ANIMATION === */
+@keyframes card-slam {
+  0% { transform: scale(2) translateY(-100px); opacity: 0; }
+  60% { transform: scale(1.1) translateY(5px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+.card-slam { animation: card-slam 0.4s ease-out; }
+
+/* === VICTORY EFFECTS === */
+@keyframes victory-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.victory-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+  background-size: 200% 100%;
+  animation: victory-shimmer 2s ease-in-out infinite;
+}
+
+@keyframes confetti {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+.confetti-piece {
+  position: fixed; width: 10px; height: 10px;
+  pointer-events: none; z-index: 200;
+  animation: confetti 3s ease-in forwards;
+}

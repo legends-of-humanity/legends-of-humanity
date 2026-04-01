@@ -1191,8 +1191,21 @@ socket.on('phase_change', (data) => {
 });
 
 socket.on('turn_result', (data) => {
-  syncLocalStateFromGame(data.gameState);
-  renderAll();
+  gameState = data.gameState;
+  // Play battle effects for actions in the log
+  if (data.log) {
+    const actionNames = data.log
+      .filter(l => l.includes('resolved'))
+      .map(l => {
+        const m = l.match(/resolved (\w+) with/);
+        return m ? m[1] : null;
+      })
+      .filter(Boolean);
+    if (typeof playActionEffects === 'function') {
+      playActionEffects(actionNames.map(a => ({ action: a })));
+    }
+  }
+  updateUI();
 });
 
 socket.on('game_over', (data) => {
@@ -1201,6 +1214,7 @@ socket.on('game_over', (data) => {
   elements['game-over-title'].textContent = data.winner === myId ? 'Victory' : 'Defeat';
   elements['game-over-reason'].textContent = REASON_MAP[data.reason] || data.reason || 'Match ended.';
   elements['game-over'].hidden = false;
+  if (typeof playVictoryEffect === 'function') playVictoryEffect(data.winner === myId);
 });
 
 socket.on('error', (data) => {
